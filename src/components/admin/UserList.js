@@ -48,32 +48,36 @@ class UserList extends Component {
                     {!!users &&
                         <div>
                             <Row><PageHeader className="App">{t("List of Users")}</PageHeader> </Row>
-                            <Row>
-                                <Col xs={4} xsOffset={3}>
-                                    <Table className="App" striped bordered hover>
-                                        <thead >
-                                            <tr >
-                                                <th>{t("Username")}</th>
-                                                <th>{t("Email")}</th>
-                                                <th>{t("Wall status")}</th>                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {Object.keys(users).map(key =>
-                                                <tr key={key} >
-                                                    <td>{users[key].username}</td>
-                                                    <td>{users[key].email}</td>
-                                                    <td>                                                      
-                                                        {<button type="button" className="btn btn-default btn-xs" onClick={this.handleIconClick(key, routes.WALL)}>
-                                                            <span className="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                                                        </button>}
-                                                        {users[key].unreadMessages > 0 && <Badge className="badge-nav">{users[key].unreadMessages}</Badge>}
-                                                    </td>
-                                                </tr>)
-                                            }
-                                        </tbody>
-                                    </Table>
-                                </Col>
+                            <Row>                                
+                                <Table className="App" striped bordered hover>
+                                    <thead >
+                                        <tr >
+                                            <th>{t("Username")}</th>
+                                            <th>{t("Google Disply Name")}</th>
+                                            <th>{t("Email")}</th>
+                                            <th>{t("Language")}</th>
+                                            <th>{t("Unread Messages")}</th>
+                                            <th>{t("Wall_status")}</th>                                                
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {Object.keys(users).map(key =>
+                                            <tr key={key} >
+                                                <td>{users[key].username}</td>
+                                                <td>{users[key].googleDisplayName}</td>
+                                                <td>{users[key].email}</td>
+                                                <td>{users[key].language}</td>
+                                                <td>{users[key].unreadMessages}</td>
+                                                <td>                                                      
+                                                    {<button type="button" className="btn btn-default btn-xs" onClick={this.handleIconClick(key, routes.WALL)}>
+                                                        <span className="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                                    </button>}
+                                                    {users[key].unreadMessages > 0 && <Badge className="badge-nav">{users[key].unreadMessages}</Badge>}
+                                                </td>
+                                            </tr>)
+                                        }
+                                    </tbody>
+                                </Table>                             
                             </Row>
                         </div>
                     }
