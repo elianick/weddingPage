@@ -18,24 +18,25 @@ html,body{
   border-bottom: 8px solid #b1b1b1;
   border-right: 8px solid #8a8a8a;
   border-left: 8px solid #8a8a8a;
-  margin-top: 20px;
+  width: 50%;
+  margin: 0 auto;
   width: 60px;
   height: 60px;
+  text-align: center;
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;  
 }
 
 .loading-container{
   font-family: "Paprika";
-  text-align: center;
   color: #8a8a8a;
   font-weight: bold;
   font-size: 1.1em;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%)
+  margin: auto;
+  position: relative;
+  text-align: center;
+  top: 40%;
+  width: 20%;  
 }
 
 @-webkit-keyframes spin {

@@ -124,11 +124,7 @@ class SignIn extends Component {
         if (showLoading){
 
             return (
-                <div>
-                    hola
-                    {//TODO: put loading per silvini}
-                    }
-                </div>
+                <div className="loading-container"><div className="loading"></div></div>
             );
         }
 
