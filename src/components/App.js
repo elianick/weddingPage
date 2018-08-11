@@ -35,7 +35,7 @@ class App extends Component {
 
     render() {
         const { props: { authUser, activeNav }, state:{showApp} } = this;
-        if (!authUser && !showApp) return (<div className="loading-container">Loading...  <div className="loading"></div></div>);
+        if (!authUser && !showApp) return (<div className="loading-container"><div className="loading"></div></div>);
         return (
             <Router>
                 <div style={{height: "100%"}} >
