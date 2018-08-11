@@ -106,34 +106,32 @@ class Quiz extends React.Component {
 
         return (
            
-                <Row key={`question-${key}`} className="no-margin"> 
-                   
-                  
-                    <Col xs={12} smHidden mdHidden lgHidden>
-                        <ControlLabel className="question-title">
+            <Row key={`question-${key}`} className="no-margin">                   
+                <Col xs={12} smHidden mdHidden lgHidden>
+                    <ControlLabel className="question-title">
+                        {`${id+1}. ${t(question.question)}`}
+                    </ControlLabel>
+                    {isAnswered && hasImage[id] && 
+                        <Image className="qustion-img-xs  w3-animate-opacity" src={`/img/q_${id}.jpg`} responsive />
+                    }
+                </Col>             
+                    
+                <Col xs={12} sm={6}>
+                    <Col xsHidden sm={12} className="question-title-sm">
+                        <ControlLabel xsHidden className="question-title">
                             {`${id+1}. ${t(question.question)}`}
                         </ControlLabel>
-                        {isAnswered && hasImage[id] && 
-                        <Image className="qustion-img-xs  w3-animate-opacity" src={`/img/q_${id}.jpg`} responsive />
-                        }
-                    </Col>             
-                    
-                    <Col xs={12} sm={6}>
-                        <Col xsHidden sm={12} className="question-title-sm">
-                            <ControlLabel xsHidden className="question-title">
-                                {`${id+1}. ${t(question.question)}`}
-                            </ControlLabel>
-                        </Col>
-                        <FormGroup id ={`${id}-form-group`} className="question">
-                            {options.map((option, optionId) => 
-                                <Radio disabled={isAnswered} name={`radioGroup${id}`} className="radio-quiz" 
-                                    checked={answers[id] === option} value={option} title = {option} onChange={this.handleRadio(id)}
-                                >
-                                    <span className={
-                                        (isAnswered && answers[id] === option && !correct && "answer-selected-ko") ||
+                    </Col>
+                    <FormGroup id ={`${id}-form-group`} className="question">
+                        {options.map((option, optionId) => 
+                            <Radio disabled={isAnswered} name={`radioGroup${id}`} className="radio-quiz" 
+                                checked={answers[id] === option} value={option} title = {option} onChange={this.handleRadio(id)}
+                            >
+                                <span className={
+                                    (isAnswered && answers[id] === option && !correct && "answer-selected-ko") ||
                                     (isAnswered && correctAnswers[id] === option && "answer-selected-ok")}>
-                                        {option}. {t(question.answers[optionId])}</span> 
-                                    {isAnswered && 
+                                    {option}. {t(question.answers[optionId])}</span> 
+                                {isAnswered && 
                                 <div className={
                                     (correctAnswers[id] == option && "quiz-ok") ||
                                     (answers[id] === option && "quiz-ko") ||
@@ -142,25 +140,25 @@ class Quiz extends React.Component {
                                     {answers[id] === option && isAnswered && !correct && <i class="fa fa-thumbs-down"></i>}
                                     {" "}{t(question.answerResults[optionId])}
                                 </div>}                            
-                                </Radio>
-                            )}                                         
-                        </FormGroup>
+                            </Radio>
+                        )}                                         
+                    </FormGroup>
 
-                        {!btnDisable && 
+                    {!btnDisable && 
                         <Button disabled={!isQuestionAnswered} className="btn  btn-primary btn-quiz" onClick={this.handleSubmitAnswer}>
                             {t("submitQuestion")}
                         </Button>}
-                        {nextQuestionEnabled && 
+                    {nextQuestionEnabled && 
                         <Button className="btn  btn-primary btn-quiz" onClick={this.handleNextQuestion}>
                             {answered < 15? t("nextQuestion") : t("submitAndFinish")}
                         </Button>}
-                    </Col>
-                    <Col xsHidden sm={6}>
-                        {isAnswered && hasImage[id] && <Image className="qustion-img-sm w3-animate-opacity" src={`/img/q_${id}.jpg`} responsive />}
-                    </Col>
+                </Col>
+                <Col xsHidden sm={6}>
+                    {isAnswered && hasImage[id] && <Image className="qustion-img-sm w3-animate-opacity" src={`/img/q_${id}.jpg`} responsive />}
+                </Col>
                 
                     
-                </Row>);
+            </Row>);
     } 
     
     handleNextQuestion = () => {        
@@ -190,7 +188,7 @@ class Quiz extends React.Component {
     }
 
     render() {
-        const {props:{t}, state:{questions, answered, nextQuestionEnabled, mark, answers} } = this;        
+        const {props:{t}, state:{questions, answered, nextQuestionEnabled, mark} } = this;        
         return (
             <div>
                 <Grid> 

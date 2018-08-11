@@ -112,7 +112,7 @@ class NewRequest extends React.Component {
 
     }
 
-    handleRemovePerson = index => event => {
+    handleRemovePerson = index => () => {
         const persons = this.state.persons.filter((person, i) => i !== index);
         this.setState({persons: persons});
     }
@@ -186,7 +186,7 @@ class NewRequest extends React.Component {
         return true;
     }
 
-    handleDateChange = id => (value, formattedValue) =>
+    handleDateChange = () => (value, formattedValue) =>
         this.setState({
             //id: value, // ISO String, ex: "2016-11-19T12:00:00.000Z"
             id: formattedValue // Formatted String, ex: "11/19/2016"
@@ -194,7 +194,7 @@ class NewRequest extends React.Component {
       
 
     render() {//eslint-disable-line complexity
-        const { props: { t }, state: { intollerance, isConfirmed, moreThenOne, persons, lastUpdate, prevLastUpdate, stayNight, foreign, arrival, departure, saved, ride} } = this;        
+        const { props: { t }, state: { intollerance, isConfirmed, moreThenOne, persons, lastUpdate, prevLastUpdate, stayNight, foreign, arrival, saved, ride} } = this;        
         const btnDisabled = isConfirmed === "" ||
         (isConfirmed === "Y" && !this.isPersonsValid());     
         let flash = false;

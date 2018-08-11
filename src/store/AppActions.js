@@ -64,7 +64,7 @@ export function login(userAuth) {
                 return dispatch(userLogin(userAuth, user));
             })
             .catch(() => setTimeout(() => {
-                auth.doSignOut()
+                auth.doSignOut();
             }, 15000)
             );
     };
@@ -82,7 +82,7 @@ function loadLiterals(){
             i18n.addResources("it","quiz", data.quiz.it);          
             return;
         }).catch(false);
-};
+}
 
 export function getUnreadMessagesCount(uid, isReviewer) {
     return (dispatch) => {

@@ -22,8 +22,7 @@ class Home extends Component {
             </Carousel.Item>);
     }
 
-    render() {
-        const { props: { t } } = this;
+    render() {      
         const slidesId = [1,2,3];
         return (
             <div className="max-height">      

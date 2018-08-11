@@ -5,7 +5,7 @@ import withAuthorization from "./auth/withAutorization";
 import { withRouter } from "react-router-dom";
 import { translate } from "react-i18next";
 import {RSVP} from "../constants/routes";
-import { Col, Grid, Row, PageHeader, Panel, PanelGroup, Image, Alert, Button } from "react-bootstrap";
+import { Col, Grid, Row, PageHeader, Panel, PanelGroup, Image, Alert } from "react-bootstrap";
 import {db} from "../firebase";
 
 class Logistics extends React.Component {
@@ -145,7 +145,8 @@ class Logistics extends React.Component {
 
 Logistics.propTypes = {    
     history: PropTypes.object.isRequired,
-    setActiveNav: PropTypes.func.isRequired
+    setActiveNav: PropTypes.func.isRequired,
+    t: PropTypes.func.isRequired
 };
 
 const authCondition = (authUser) => !!authUser;
