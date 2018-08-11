@@ -1,0 +1,27 @@
+.login-header{
+    text-align: center;
+    font-size: 1.2em !important;
+  }
+
+.login-button {
+    min-width: 185px;
+    min-height: 40px;
+    margin: 4px 0 0 0;   
+  }
+  
+.div-login-button {
+    display: table ;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 15px;
+  }
+
+.google-login{  
+    border-top: 10px;  
+  }
+
+.div-login-button:hover {
+    cursor: pointer;
+    opacity: 1.5;
+}
+  
