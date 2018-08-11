@@ -2,7 +2,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { translate } from "react-i18next";
-import {Table,Grid, Radio, FormGroup, ControlLabel, Button, Image, Row, Col, Alert} from "react-bootstrap";
+import {Table,Grid, Radio, FormGroup, ControlLabel, Button, Image, Row, Col, Alert, ProgressBar} from "react-bootstrap";
 import {clone} from "lodash";
 import { db } from "../../firebase";
 const questionIds = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ,11 ,12 ,13 ,14];
@@ -187,13 +187,42 @@ class Quiz extends React.Component {
         }
     }
 
+
+    progressBar = () =>{
+        let correctAnswers = 0;
+        let wrongAnswers = 0;
+        const {state: {answered, answers}} = this;
+        answers.forEach(
+            (element, i) =>{  
+                if (i < answered){
+                    
+                    if (element === this.state.correctAnswers[i]){
+                        correctAnswers ++;
+                    } else {
+                       wrongAnswers ++;
+                    }                    
+                }
+            });             
+        
+        correctAnswers = correctAnswers / 15 * 100;
+        wrongAnswers = wrongAnswers / 15 * 100;
+        return (
+            <div className="quiz-progress-bar">
+                <ProgressBar >
+                    <ProgressBar  bsStyle="success" now={correctAnswers} key={1} />
+                    <ProgressBar  bsStyle="danger" now={wrongAnswers} key={2} />                
+                </ProgressBar>
+            </div>
+            );
+    }
+
     render() {
         const {props:{t}, state:{questions, answered, nextQuestionEnabled, mark} } = this;        
         return (
             <div>
                 <Grid> 
                     <Row><div className="quiz-intro"> {t("quizIntro")} </div></Row>
-
+                    {this.progressBar()}
                     {questions.map(this.renderQuestion)}
                   
                     {answered < 15 || answered===15 && nextQuestionEnabled? <div>                       

@@ -1,7 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import "./../css/rsvp.css";
-import { Grid, Row, PageHeader, Panel, PanelGroup, Label } from "react-bootstrap";
+import { Grid, Row, PageHeader, Panel, PanelGroup, Label, Modal, Button } from "react-bootstrap";
 import {noop} from "lodash";
 import { db } from "../firebase";
 import withAuthorization from "../components/auth/withAutorization";
@@ -13,7 +13,11 @@ class Rsvp extends React.Component {
 
     constructor(props) {
         super(props);    
-        this.state = {activePanel: "", mark: null, showSection: false};
+        this.state = {
+            activePanel: "",
+            mark: null, 
+            showSection: false,
+            showPopup: false};
     }
 
 
@@ -32,7 +36,7 @@ class Rsvp extends React.Component {
             snapshot => {
                 const data = snapshot.toJSON();                
                 if (data == null || !data.mark)
-                    return this.setState({activePanel: "QUIZ", showSection:true});                
+                    return this.setState({activePanel: "QUIZ", showSection:true, showPopup: !data });                
                 const mark = data.mark;            
                 return this.setState({mark: mark, activePanel: justAnswered? "QUIZ" : "RSVP", showSection:true});
             }).catch(noop);        
@@ -41,6 +45,25 @@ class Rsvp extends React.Component {
     activateRSVP = () =>{
         this.isQuizAnswered(true);
     }
+
+    popup = () => 
+        <Modal show={this.state.showPopup} bsSize="large" aria-labelledby="contained-modal-title-lg">
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-lg">{this.props.t("popupTitle")}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <div className="RSVP-subheader">
+                    {this.props.t("RSVPsubheader")}
+                    <br/>{this.props.t("RSVPsubheader2")}
+                </div>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button onClick={this.handleHidePopup}>Close</Button>
+            </Modal.Footer>
+        </Modal>
+
+    handleHidePopup = () => this.setState({showPopup: false});
+    handleShowPopup = () => this.setState({showPopup: true});
   
     render() {
         const {state:{activePanel, mark, showSection}, props:{t}} = this;       
@@ -48,9 +71,10 @@ class Rsvp extends React.Component {
             <div>
                 {showSection && <Grid >
                     <Row><PageHeader className="App">{this.props.t("RSVP & Quiz")}</PageHeader> </Row>
-                    <div className="RSVP-subheader"><span className="RSVP-subheader2"><Label bsStyle="primary">READ ME...</Label></span> { }
-                        {t("RSVPsubheader")}
-                        <br/>{t("RSVPsubheader2")}</div>
+                    <div className="RSVP-subheader" onClick={this.handleShowPopup}>
+                        <span className="RSVP-subheader2"><Label bsStyle="primary">READ ME...</Label></span> { }
+                    </div>
+                    {this.popup()}
                     <PanelGroup accordion id="accordion-rsvp" onSelect={this.handleChangePanel} activeKey={activePanel}>
                         <Panel eventKey="QUIZ" bsStyle="info" >
                             <Panel.Heading>
@@ -70,7 +94,7 @@ class Rsvp extends React.Component {
                                 <Panel.Title toggle>
                                     <div className={mark? "panel-header" : "panel-header panel-head-disabled"}>
                                         <span class="glyphicon glyphicon-hand-right"></span> 
-                                        {  } RSVP
+                                        { } RSVP
                                     </div>
                                 </Panel.Title>
                             </Panel.Heading >

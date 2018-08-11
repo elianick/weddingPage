@@ -44,10 +44,10 @@ export const addMessage = (message, uid, isReviewer) => {
 };
 
 
-export const sendNotification = (notification, uid) => {
+export const sendNotification = (notification, uid) => 
     db.ref(`notifications/${uid}`)//eslint-disable-line fp/no-mutating-methods
         .push({ ...notification });
-};
+
 
 export const incrementUnreadMessages = (uid, isReviewer) => {
     if (!isReviewer) {

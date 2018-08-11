@@ -1,4 +1,4 @@
-import { db, auth } from "../firebase";
+import { db, auth, firebase } from "../firebase";
 import i18n from "i18next";
 
 export const AppActionTypes = {
@@ -107,7 +107,12 @@ export function loadMessages(uid, isReviewer) {
 export function sendMessage(message, uid, isReviewer, notification) {
     return (dispatch) => {
         db.addMessage(message, uid, isReviewer);
-        db.sendNotification(notification, uid);
+        db.sendNotification(notification, uid)
+            .then(() => {
+                const sendEmailToCall = firebase.functions.httpsCallable("sendEmailTo");        
+                return sendEmailToCall(notification);
+            })
+            .catch(error => console.log(error));
         db.onceGetWall(uid)
             .then(snapshot => dispatch(loadWall(orderMessages(snapshot.toJSON()))))
             .catch(() => dispatch(loadWall([])));
