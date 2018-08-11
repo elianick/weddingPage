@@ -1,4 +1,4 @@
-import { auth, provider } from "./firebase";
+import { auth, provider, resetPasswordDomain } from "./firebase";
 
 // Sign Up
 export const doCreateUserWithEmailAndPassword = (email, password) =>
@@ -13,8 +13,9 @@ export const doSignOut = () =>
     auth.signOut();
 
 // Password Reset
-export const doPasswordReset = (email) =>
-    auth.sendPasswordResetEmail(email);
+export const doPasswordReset = (email) =>    
+    auth.sendPasswordResetEmail(email, {url: resetPasswordDomain});
+
 
 // Password Change
 export const doPasswordUpdate = (password) =>
