@@ -30,7 +30,8 @@ const INITIAL_STATE = {
     googleError: null,
     weddingCode: "",
     showInputCode: false,
-    username:""
+    username:"",
+    showLoading: false
 };
 
 class SignIn extends Component {
@@ -62,6 +63,7 @@ class SignIn extends Component {
     }
 
     handleGoogleSignIn = () => {
+        this.setState({showLoading: true});
         auth.doSignInWithGoogleAccount()
             .then(result => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
@@ -76,11 +78,11 @@ class SignIn extends Component {
                             return this.props.history.push(routes.HOME);
                         }
                         else {
-                            return this.setState({user:user, username:user.displayName, showInputCode: true});
+                            return this.setState({user:user, username:user.displayName, showInputCode: true, showLoading: false});
                         }
-                    }).catch(false);               
+                    }).catch( () => this.setState({showLoading: false}));               
             })
-            .catch(error => this.setState({googleError: error}));
+            .catch(error => this.setState({googleError: error, showLoading: false}));
     };
 
     SignUpLink = () => <p>{this.props.t("noAccount")}{ } <Link to={routes.SIGN_UP}>{this.props.t("signUp")}</Link></p>;
@@ -114,10 +116,21 @@ class SignIn extends Component {
     }
 
     render() {
-        const { state:{email, password, error, googleError, showInputCode, weddingCode}, props:{t}} = this;
+        const { state:{email, password, error, googleError, showInputCode, weddingCode, showLoading}, props:{t}} = this;
 
         const isInvalid = (!showInputCode && (password === "" || email === "")) ||
                           (showInputCode && weddingCode === "") ;
+
+        if (showLoading){
+
+            return (
+                <div>
+                    hola
+                    {//TODO: put loading per silvini}
+                    }
+                </div>
+            );
+        }
 
         return (
            
