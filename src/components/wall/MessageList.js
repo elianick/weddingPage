@@ -21,7 +21,6 @@ class MessageList extends React.Component {
         const { props: { t, messages } } = this;
         return (
             <div>
-                <h2> {t("History")} </h2>
                 {messages && Object.keys(messages).map(key => (
                     <Col key={key} >
                         <MessageContainer message={messages[key]} />

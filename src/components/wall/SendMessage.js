@@ -1,7 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { MAIL_CODES } from "../../constants/appConstant";
-import { Col, Row, Panel, Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Col, Row, Panel, Form, Button, FormGroup, FormControl, OverlayTrigger,Popover } from "react-bootstrap";
 import { translate } from "react-i18next";
 import { getUid, createNotification } from "../common";
 
@@ -55,20 +55,28 @@ class SendMessage extends React.Component {
         event.preventDefault();
     }
 
+    
+      
     render() {
         const { props: { t }, state: { newMessage, panelOpen, touched } } = this;
         const newMessageValidationState = newMessage === ""? "error" : "success";
-        const btnDisabled = newMessage === "";        
+        const btnDisabled = newMessage === "";  
+        const popoverRight = (
+            <Popover id="popover-positioned-right">
+                {t("popOverChat")}{' '}<i class="fa fa-smile-o"></i>
+            </Popover>  );    
         return (
             <div><Row>
                 <Col xs={12}>
-                    <Button bsStyle="success" bsSize="small" onClick={this.handlePanelButtonClick} >{t("New Message")}</Button>
+                    <Button bsStyle="success" bsSize="medium" onClick={this.handlePanelButtonClick} ><i class="fa fa-pencil"></i> {" "} {t("New Message")}</Button> 
+                    <OverlayTrigger trigger="click" placement="right" overlay={popoverRight}>
+                        <i className="fa fa-info-circle wall-intro"></i>    
+                    </OverlayTrigger>
                     <Panel  id="collapsible-panel" expanded={panelOpen} onToggle={this.handlePanelClick}>
                         <Panel.Collapse>
                             <Panel.Body>
                                 <Form onSubmit={this.handleSubmit} >
-                                    <FormGroup controlId="form-group-new-message" validationState={touched?newMessageValidationState: null}>                                        
-                                        <ControlLabel>{t("Text")}</ControlLabel>                                        
+                                    <FormGroup controlId="form-group-new-message" validationState={touched?newMessageValidationState: null}>                
                                         <FormControl 
                                             name="newMessage" 
                                             type="text" 
@@ -79,7 +87,7 @@ class SendMessage extends React.Component {
                                             placeholder={t("Enter a message")} />
                                         <FormControl.Feedback />    
                                     </FormGroup>
-                                    <Button disabled={btnDisabled} className="btn  btn-primary" type="submit">{t("Send Message")}</Button> 
+                                    <Button disabled={btnDisabled} className="btn  btn-success" type="submit"><i class="fa fa-send-o"></i> {" "} {t("Send Message")}</Button> 
                                     
                                 </Form>
                             </Panel.Body>

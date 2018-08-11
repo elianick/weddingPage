@@ -37,7 +37,7 @@ i18n
                     "Enter a message": "Enter a message",
                     "Request": "Request",
                     "New Message": "New Message",
-                    "History": "History"
+                    "popOverChat": "Only you, Elia and Silvia are able to see this chat, and you will receive a notification via email for every new message received. You won't miss anything"
                 },
                 login:{
                     fullName: "Full Name",
@@ -93,7 +93,7 @@ i18n
                     "Text": "Testo",
                     "Enter a message": "Scrivi il tuo messaggio",
                     "New Message": "Nuovo messaggio",
-                    "History": "Conversazione"
+                    "popOverChat": "La chat è visibile solo a te, Elia e Silvia, e ad ogni messaggio ricevuto ti arriverà un'e-mail. Non ti puoi perdere nulla"
                 },
                 login:{
                     fullName: "Nome Completo",
@@ -148,7 +148,7 @@ i18n
                     "Text": "Texto",
                     "Enter a message": "Escribe tu mensaje",
                     "New Message": "Nuevo mensaje",
-                    "History": "Conversación"
+                    "popOverChat": "El chat es visible solamente para ti, Elia y Silvia, y vas a recibir una notificación por email a cada mensaje nuevo recibido. No te perderás nada"
                 },
                 login:{
                     fullName: "Nombre Completo",
