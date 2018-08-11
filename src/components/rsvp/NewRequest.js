@@ -1,4 +1,6 @@
 import * as React from "react";
+import { withRouter } from "react-router-dom";
+import * as routes from "./../../constants/routes";
 import PropTypes from "prop-types";
 import {clone} from "lodash";
 import { Col, Row, ControlLabel, FormGroup, FormControl, Button, ToggleButton, ToggleButtonGroup, HelpBlock, Alert, Image} from "react-bootstrap";
@@ -192,6 +194,9 @@ class NewRequest extends React.Component {
             id: formattedValue // Formatted String, ex: "11/19/2016"
         });
       
+    handleGoToWall = () => this.props.history.push({//eslint-disable-line fp/no-mutating-methods
+        pathname: routes.WALL     
+    });
 
     render() {//eslint-disable-line complexity
         const { props: { t }, state: { intollerance, isConfirmed, moreThenOne, persons, lastUpdate, prevLastUpdate, stayNight, foreign, arrival, saved, ride} } = this;        
@@ -318,7 +323,7 @@ class NewRequest extends React.Component {
                 </Row>
                 <Row><Col xs={12} md={8} mdOffset={2}><div className="text-with-margin-top">
                     {saved &&
-                    <Alert>
+                    <Alert className="hand-click" onClick={this.handleGoToWall}>
                         {t("rsvpSaved")}<br/>
                         <strong >{t("contactUs")}</strong>{t("contactUsText")}
                     </Alert>                                            
@@ -331,7 +336,8 @@ class NewRequest extends React.Component {
 
 NewRequest.propTypes = {    
     authUser: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
     t: PropTypes.func.isRequired    
 };
 
-export default translate("quiz")(NewRequest);
+export default translate("quiz")(withRouter(NewRequest));
