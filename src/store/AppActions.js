@@ -1,4 +1,4 @@
-import { db, auth, firebase } from "../firebase";
+import { db, firebase } from "../firebase";
 import i18n from "i18next";
 
 export const AppActionTypes = {
@@ -127,7 +127,7 @@ function orderMessages(data) {
     return messages;
 }
 
-
+/*
 function addCommentToWall(requestId, page, request, uid, notification) {
     return () => {
         const message = {
@@ -144,5 +144,6 @@ function addCommentToWall(requestId, page, request, uid, notification) {
         }
         db.sendNotification(notification, uid);
 
-    };
+    };    
 }
+*/

@@ -23,7 +23,7 @@ class Home extends Component {
     }
 
     render() {      
-        const slidesId = [1,2,3];
+        const slidesId = [1,2,3,4,5,6,7];
         return (
             <div className="max-height">      
                 <Carousel >                   

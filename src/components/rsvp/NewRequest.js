@@ -203,7 +203,7 @@ class NewRequest extends React.Component {
         const btnDisabled = isConfirmed === "" ||
         (isConfirmed === "Y" && !this.isPersonsValid());     
         let flash = false;
-        if (lastUpdate != prevLastUpdate && prevLastUpdate !== null){
+        if (lastUpdate !== prevLastUpdate && prevLastUpdate !== null){
             flash = true;
         }
         const lastUpdateClass = flash? "flashit text-with-margin-top form-inline": "text-with-margin-top form-inline";
