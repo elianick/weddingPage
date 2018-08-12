@@ -8,7 +8,8 @@ i18n
         resources: {
             en: {                
                 quiz:{
-                    RSVPsubheader: "Welcome to the page where you can confirm that you will join us. Not so fast, friend... Before getting access and being able to confirm, you need to pass a test of 15 questions; once the test is completed, some magic will activate the RSVP below. If you think it's too many questions, we honestly don't care: we spent a lot of hours coding them, so they are mandatory, full stop. Make us happy.",
+                    popupTitle: "WELCOME!",
+                    RSVPsubheader: "Here you can confirm that you will join us. Not so fast, cowboy... Before getting access and being able to confirm, you need to pass a test of 15 questions; once the test is completed, some magic will activate the RSVP below. If you think it's too many questions, we honestly don't care: we spent a lot of hours coding them, so they are mandatory, full stop. Make us happy.",
                     RSVPsubheader2: "P.D.: Are you wondering what the hell is this RSVP? Don't worry, Elia didn't know either. It stands for Répondez S'il Vous Plaît, which in good manners is used to require an answer to the invitation; this is exactly what you can provide in the RSVP. Let's start with the quiz, and the most important thing: have fun!", 
                 },
                 navigation: {                
@@ -34,7 +35,7 @@ i18n
                 wall: {
                     "Send Message": "Send Message",
                     "Text": "Text",
-                    "Enter a message": "Enter a message",
+                    "Enter a message": "Enter your message here. Remember that each message generates a notification email, so don't use this chat like WhatsApp!",
                     "Request": "Request",
                     "New Message": "New Message",
                     "popOverChat": "Only you, Elia and Silvia are able to see this chat, and you will receive a notification via email for every new message received. You won't miss anything"
@@ -65,7 +66,8 @@ i18n
             },
             it: {                
                 quiz:{
-                    RSVPsubheader: "Ben atterrato/a sulla pagina dove potrai confermarci che ci sarai. No, non così in fretta... Prima di accedere alla sezione di conferma, c'è una prova da superare: un quiz di 15 domande che, una volta completate, come per magia attiveranno l'accesso al RSVP. Se le domande ti sembrano troppe, sinceramente non ce ne può fregà de' meno: ci abbiamo messo un sacco a programmarle quindi sono obbligatorie e basta. Facci contenti.",
+                    popupTitle: "BENVENUTO!",
+                    RSVPsubheader: "Su questa pagina potrai confermarci che ci sarai. No, non così in fretta... Prima di accedere alla sezione di conferma, c'è una prova da superare: un quiz di 15 domande che, una volta completate, come per magia attiveranno l'accesso al RSVP. Se le domande ti sembrano troppe, sinceramente non ce ne può fregà de' meno: ci abbiamo messo un sacco a programmarle quindi sono obbligatorie e basta. Facci contenti.",
                     RSVPsubheader2: "P.S.: Ti stai chiedendo che diamine è l'RSVP? Tranquillo/a, nemmeno Elia lo sapeva. È la sigla di Répondez S'il Vous Plaît, con cui nel galateo si indica la cortese richiesta di confermare o meno la propria partecipazione; questo è esattamente quello che potrai fare nella nostra sezione RSVP. Ora bando alle ciance, inizia sto benedetto quiz!",                 
                 },
                 navigation: {                
@@ -91,7 +93,7 @@ i18n
                 wall: {
                     "Send Message": "Invia il tuo messaggio",
                     "Text": "Testo",
-                    "Enter a message": "Scrivi il tuo messaggio",
+                    "Enter a message": "Scrivi il tuo messaggio. Ogni messaggio genera un'e-mail di notifica, perciò non usare la chat come se fosse WhatsApp!",
                     "New Message": "Nuovo messaggio",
                     "popOverChat": "La chat è visibile solo a te, Elia e Silvia, e ad ogni messaggio ricevuto ti arriverà un'e-mail. Non ti puoi perdere nulla"
                 },
@@ -120,7 +122,8 @@ i18n
             },
             es: {                
                 quiz:{
-                    RSVPsubheader: "Bienvenido/a en la página donde podrás confirmarnos que vendrás. No, no tan rápido... Antes de poder acceder a la sección para confirmar, hay que superar una prueba: un test de 15 preguntas que, una vez completadas, por arte de magia activarán el acceso al RSVP. Si te parecen muchas preguntas, sinceramente no nos importa: hemos tardado muchas horas para programarlas, con lo cual son obligatorias y punto. Haznos felices.",
+                    popupTitle: "BIENVENIDO!",
+                    RSVPsubheader: "En esta página podrás confirmarnos que vendrás. No, no tan rápido... Antes de poder acceder a la sección para confirmar, hay que superar una prueba: un test de 15 preguntas que, una vez completadas, por arte de magia activarán el acceso al RSVP. Si te parecen muchas preguntas, sinceramente no nos importa: hemos tardado muchas horas para programarlas, con lo cual son obligatorias y punto. Haznos felices.",
                     RSVPsubheader2: "P.D.: ¿Te estás preguntando qué es el RSVP? Tranquilo/a, ni siquiera Elia lo sabía. Es el acrónimo de Répondez S'il Vous Plaît, y según las buenas maneras indica la amable petición a los invitados de confirmar su participación; eso es lo que vas a poder hacer en nuestra sección de RSVP. Dale, basta perder tiempo, ¡empieza este quiz!", 
                 },
                 navigation: {                
@@ -146,7 +149,7 @@ i18n
                 wall: {
                     "Send Message": "Envía tu mensaje",
                     "Text": "Texto",
-                    "Enter a message": "Escribe tu mensaje",
+                    "Enter a message": "Escribe tu mensaje. Recuerda que cada mensaje genera un email de notificación, así que por favor no uses este chat como si fuera WhatsApp!",
                     "New Message": "Nuevo mensaje",
                     "popOverChat": "El chat es visible solamente para ti, Elia y Silvia, y vas a recibir una notificación por email a cada mensaje nuevo recibido. No te perderás nada"
                 },

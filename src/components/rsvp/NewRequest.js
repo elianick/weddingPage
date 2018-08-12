@@ -212,7 +212,7 @@ class NewRequest extends React.Component {
             <div>
                 <Row>
                     <FormGroup >
-                        <Col componentClass={ControlLabel} sm={12}>{t("areYouComing")}</Col>
+                        <Col componentClass={ControlLabel} sm={12}><i class="fa fa-bell"></i> {" "} {t("areYouComing")}</Col>
                         <Col sm={12} >
                             <ToggleButtonGroup type="radio" id="is-confirmed" name="isConfirmed" onClick={this.handleFormChanges} >
                                 <ToggleButton name="isConfirmed" value="Y" className={isConfirmed ==="Y"? "btn btn-primary": "" }>{t("yes")}</ToggleButton>
@@ -221,13 +221,18 @@ class NewRequest extends React.Component {
                         </Col>
                     </FormGroup>
                 </Row>
+                {isConfirmed === "N" &&
+                <div className="text-with-margin-top">
+                    {t("thanksNo")}
+                </div>
+                }
                 {isConfirmed === "Y" && 
                 <div>                
                     <Row><Col xs={12}> <div className="text-with-margin-top text-with-margin-bottom ">{t("thanks")}</div></Col></Row>
                     <Row> 
                         <Col>
                             <FormGroup>
-                                <Col componentClass={ControlLabel} sm={12}>{t("whoCome")}<span className="label-note"> {t("whoComeNote")}</span></Col>
+                                <Col componentClass={ControlLabel} sm={12}><i class="fa fa-male"></i><i class="fa fa-male"></i> {" "} {t("whoCome")}<span className="label-note"> {t("whoComeNote")}</span></Col>
                                 <Col sm={12}>
                                     <ToggleButtonGroup type="radio" id="more-then-one" name="moreThenOne" onClick={this.handleFormChanges} >
                                         <ToggleButton id="moreThenOne" value="Y" className={moreThenOne ==="Y"? "btn btn-primary": "" }>{t("yes")}</ToggleButton>
@@ -246,7 +251,7 @@ class NewRequest extends React.Component {
                         <Row>                         
                             <Col className="text-with-margin-top">                    
                                 <FormGroup >
-                                    <Col componentClass={ControlLabel} sm={12}>{t("intollerance")}</Col>
+                                    <Col componentClass={ControlLabel} sm={12}><i class="fa fa-apple"></i> {" "} {t("intollerance")}</Col>
                                     <Col sm={11}>
                                         <FormControl id="formIntollerance" type="text" componentClass="textarea" rows="4" name="intollerance" value={intollerance} onChange={this.handleFormChanges} placeholder={t("intollerancePlaceholder")} />
                                     </Col>
@@ -266,7 +271,7 @@ class NewRequest extends React.Component {
 
                     <Row>
                         <FormGroup >
-                            <Col componentClass={ControlLabel} sm={12}>{t("stayNight")}</Col>
+                            <Col componentClass={ControlLabel} sm={12}><i class="fa fa-music"></i> {" "} {t("stayNight")}</Col>
                             <Col sm={12} >
                                 <ToggleButtonGroup type="radio" id="stay-night" name="stayNight" onClick={this.handleFormChanges} >
                                     <ToggleButton name="stayNight" value="Y" className={stayNight ==="Y"? "btn btn-primary": "" }>{t("yes")}</ToggleButton>
@@ -281,7 +286,7 @@ class NewRequest extends React.Component {
                     </div></Col></Row>                       
                     <Row>
                         <FormGroup >
-                            <Col componentClass={ControlLabel} sm={12}>{t("foreign")}</Col>
+                            <Col componentClass={ControlLabel} sm={12}><i class="fa fa-suitcase"></i> {" "} {t("foreign")}</Col>
                             <Col sm={12} >
                                 <ToggleButtonGroup type="radio" id="foreign" name="foreign" onClick={this.handleFormChanges} >
                                     <ToggleButton name="foreign" value="Y" className={foreign ==="Y"? "btn btn-primary": "" }>{t("yes")}</ToggleButton>
@@ -292,7 +297,7 @@ class NewRequest extends React.Component {
                     </Row>                    
                     {foreign === "Y" && <div><div className="text-with-margin-top text-with-margin-bottom"/> <Row>
                         <FormGroup >
-                            <Col componentClass={ControlLabel} sm={12}>{t("when")}</Col>
+                            <Col componentClass={ControlLabel} sm={12}><i class="fa fa-calendar"></i> {" "} {t("when")}</Col>
                             <Col sm={2}>
                                 <FormControl id="formArrival" type="text" name="arrival" value={arrival} onChange={this.handleFormChanges} placeholder="__/__/__" />
                             </Col>
@@ -303,7 +308,7 @@ class NewRequest extends React.Component {
                     </Row></div>}
                     {foreign === "Y" && <div><div className="text-with-margin-top text-with-margin-bottom"/> <Row>
                         <FormGroup >
-                            <Col componentClass={ControlLabel} sm={12}>{t("ride")}</Col>
+                            <Col componentClass={ControlLabel} sm={12}><i class="fa fa-bicycle"></i> {" "} {t("ride")}</Col>
                             <Col sm={12} >
                                 <ToggleButtonGroup type="radio" id="ride" name="ride" onClick={this.handleFormChanges} >
                                     <ToggleButton name="ride" value="Y" className={ride ==="Y"? "btn btn-primary": "" }>{t("yes")}</ToggleButton>

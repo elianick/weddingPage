@@ -69,7 +69,7 @@ class SendMessage extends React.Component {
             <div><Row>
                 <Col xs={12}>
                     <Button bsStyle="success" bsSize="medium" onClick={this.handlePanelButtonClick} ><i class="fa fa-pencil"></i> {" "} {t("New Message")}</Button> 
-                    <OverlayTrigger trigger="click" placement="right" overlay={popoverRight}>
+                    <OverlayTrigger trigger="click" placement="bottom" overlay={popoverRight}>
                         <i className="fa fa-info-circle wall-intro"></i>    
                     </OverlayTrigger>
                     <Panel  id="collapsible-panel" expanded={panelOpen} onToggle={this.handlePanelClick}>

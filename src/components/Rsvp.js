@@ -47,12 +47,12 @@ class Rsvp extends React.Component {
     }
 
     popup = () => 
-        <Modal show={this.state.showPopup} bsSize="large" aria-labelledby="contained-modal-title-lg">
+        <Modal show={this.state.showPopup} onHide={this.handleHidePopup} bsSize="large" aria-labelledby="contained-modal-title-lg">
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-lg">{this.props.t("popupTitle")}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <div className="RSVP-subheader">
+                <div>
                     {this.props.t("RSVPsubheader")}
                     <br/>{this.props.t("RSVPsubheader2")}
                 </div>
@@ -70,11 +70,13 @@ class Rsvp extends React.Component {
         return (
             <div>
                 {showSection && <Grid >
-                    <Row><PageHeader className="App">{this.props.t("RSVP & Quiz")}</PageHeader> </Row>
+                    <Row><PageHeader className="App">{this.props.t("RSVP & Quiz")}
                     <div className="RSVP-subheader" onClick={this.handleShowPopup}>
-                        <span className="RSVP-subheader2"><Label bsStyle="primary">READ ME...</Label></span> { }
+                        <span className="RSVP-subheader2"><Label bsStyle="primary">info <span class="glyphicon glyphicon-hand-left"></span></Label></span> { }
                     </div>
                     {this.popup()}
+                    </PageHeader> </Row>
+                    
                     <PanelGroup accordion id="accordion-rsvp" onSelect={this.handleChangePanel} activeKey={activePanel}>
                         <Panel eventKey="QUIZ" bsStyle="info" >
                             <Panel.Heading>
