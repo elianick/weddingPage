@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import * as routes from "./../../constants/routes";
 import PropTypes from "prop-types";
-import { Grid, Col, Row, Table, PageHeader, Badge } from "react-bootstrap";
+import { Grid, Row, Table, PageHeader, Badge } from "react-bootstrap";
 import "./../../css/userList.css";
 import { db } from "../../firebase";
 import { translate } from "react-i18next";

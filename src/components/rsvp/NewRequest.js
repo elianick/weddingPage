@@ -40,7 +40,7 @@ class NewRequest extends React.Component {
         
         const { target } = event;
         const { name, value } = target;        
-        if (!value && value != "") return;        
+        if (!value && value !== "") return;        
         const partialState = {};
         partialState[name] = value;
         if (name === "isConfirmed" && value ==="Y")        
@@ -180,7 +180,7 @@ class NewRequest extends React.Component {
         persons.forEach(p => {
             if (p.age >=0 && p.name !== "")
                 hasAtLeastOnePerson = true;
-            if (p.age >= 0 && p.name === "" || (!p.age && p.name !== ""))    
+            if ((p.age >= 0 && p.name === "") || (!p.age && p.name !== ""))    
                 isInvalid = true;
         });  
         if (isInvalid || !hasAtLeastOnePerson)
@@ -203,7 +203,7 @@ class NewRequest extends React.Component {
         const btnDisabled = isConfirmed === "" ||
         (isConfirmed === "Y" && !this.isPersonsValid());     
         let flash = false;
-        if (lastUpdate != prevLastUpdate && prevLastUpdate != null){
+        if (lastUpdate != prevLastUpdate && prevLastUpdate !== null){
             flash = true;
         }
         const lastUpdateClass = flash? "flashit text-with-margin-top form-inline": "text-with-margin-top form-inline";
