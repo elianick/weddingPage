@@ -19,8 +19,6 @@
 .new-message {
     animation: newMex 4s; 
     animation-iteration-count: 1;
-    font-size: 1em !important; 
-    margin-right: 4px; 
 }
 
 @keyframes newMex {

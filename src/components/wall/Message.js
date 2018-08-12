@@ -36,7 +36,7 @@ class Message extends Component {
                         <Panel.Heading className="message-header">                         
                             <h5 className={!isMyMessage? "": "text-right" }>
                                 <strong>
-                                {newMessage && <Label bsStyle="primary" className="new-message">{t("NEW")}</Label>}                    
+                                {newMessage && <h4><Label bsStyle="primary" className="new-message">{t("NEW")}</Label></h4>}                    
                                     {new Date(message.creationDate).toLocaleTimeString()} {new Date(message.creationDate).toLocaleDateString()} - {message.author} 
                                 </strong> 
                             </h5>
