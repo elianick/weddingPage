@@ -5,7 +5,9 @@ import { translate } from "react-i18next";
 import {Table,Grid, Radio, FormGroup, ControlLabel, Button, Image, Row, Col, Alert, ProgressBar} from "react-bootstrap";
 import {clone} from "lodash";
 import { db } from "../../firebase";
+
 const questionIds = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ,11 ,12 ,13 ,14];
+const totalQuestions = 2;
 class Quiz extends React.Component {
 
     constructor(props) {
@@ -87,7 +89,7 @@ class Quiz extends React.Component {
     renderQuestion = (question, key) => {        
         const {state:{answers, correctAnswers, hasImage, answered, nextQuestionEnabled}, props:{t}} = this;
         const {id} = question;
-        const btnDisable = answered === 15 || nextQuestionEnabled;        
+        const btnDisable = answered === totalQuestions || nextQuestionEnabled;        
         const isQuestionAnswered = answers[answered] && answers[answered].length >0;        
       
         const options = id < 10 ? ["A", "B", "C"] : ["A", "B"];
@@ -96,11 +98,11 @@ class Quiz extends React.Component {
         if (id > answered || isReviewingAnswer) return;
         const isAnswered = id < answered;      
         
-        if (answered === 15 && !this.state.nextQuestionEnabled){
+        if (answered === totalQuestions && !this.state.nextQuestionEnabled){
             // this is when the quiz is already finished
         }
         else if (
-            answered === 15 && (id !== 14 && this.state.nextQuestionEnabled) ||
+            answered === totalQuestions && (id !== (totalQuestions-1) && this.state.nextQuestionEnabled) ||
             isAnswered && !(id === answered-1 && this.state.nextQuestionEnabled))
             return;
 
@@ -150,7 +152,7 @@ class Quiz extends React.Component {
                         </Button>}
                     {nextQuestionEnabled && 
                         <Button className="btn  btn-primary btn-quiz" onClick={this.handleNextQuestion}>
-                            {answered < 15? t("nextQuestion") : t("submitAndFinish")}
+                            {answered < totalQuestions? t("nextQuestion") : t("submitAndFinish")}
                         </Button>}
                 </Col>
                 <Col xsHidden sm={6}>
@@ -163,7 +165,7 @@ class Quiz extends React.Component {
     
     handleNextQuestion = () => {        
         this.setState({nextQuestionEnabled: false});     
-        if (this.state.answered === 15){
+        if (this.state.answered === totalQuestions){
             this.props.activateRSVP();
             setTimeout(() => {
                 this.scrollToBottom();    
@@ -172,7 +174,7 @@ class Quiz extends React.Component {
     }
 
     handleSubmitAnswer = () => {        
-        if (this.state.answered == 14){
+        if (this.state.answered == (totalQuestions-1)){
             db.saveQuizResult(this.props.authUser.uid,this.calculateMark(), this.state.answers)
                 .then(() => {
                     this.setState({answered: this.state.answered + 1, nextQuestionEnabled: true});
@@ -204,8 +206,8 @@ class Quiz extends React.Component {
                 }
             });             
         
-        correctAnswers = correctAnswers / 15 * 100;
-        wrongAnswers = wrongAnswers / 15 * 100;
+        correctAnswers = correctAnswers / totalQuestions * 100;
+        wrongAnswers = wrongAnswers / totalQuestions * 100;
         return (
             <div className="quiz-progress-bar">
                 <ProgressBar >
@@ -225,12 +227,12 @@ class Quiz extends React.Component {
                     {this.progressBar()}
                     {questions.map(this.renderQuestion)}
                   
-                    {answered < 15 || answered===15 && nextQuestionEnabled? <div>                       
+                    {answered < totalQuestions || answered===totalQuestions && nextQuestionEnabled? <div>                       
                     </div>  
                         : 
                         <Row><Col xs={12} md={11}>
                             <Alert>
-                                {t("yourResultIs")}<strong> {mark}/15</strong>. {t("checkWhoYouAre")} 
+                                {t("yourResultIs")}<strong> {mark}/{totalQuestions}</strong>. {t("checkWhoYouAre")} 
                                 { } <i class="fa fa-smile-o"></i><i class="fa fa-smile-o"></i><i class="fa fa-smile-o"></i>
                             </Alert>
                             <Table bordered condensed>

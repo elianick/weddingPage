@@ -27,7 +27,7 @@ class Rsvp extends React.Component {
     }
 
     handleChangePanel = panel => {        
-        if (!this.state.mark && panel === "RSVP")
+        if (this.state.mark===null && panel === "RSVP")
             return;
         this.setState({ activePanel: panel }); }
 
@@ -35,7 +35,7 @@ class Rsvp extends React.Component {
         db.getQuizResult(this.props.authUser.uid).then(
             snapshot => {
                 const data = snapshot.toJSON();                
-                if (data == null || !data.mark)
+                if (data == null || data.mark === null)
                     return this.setState({activePanel: "QUIZ", showSection:true, showPopup: !data });                
                 const mark = data.mark;            
                 return this.setState({mark: mark, activePanel: justAnswered? "QUIZ" : "RSVP", showSection:true});
@@ -83,7 +83,7 @@ class Rsvp extends React.Component {
                                 <Panel.Title toggle>
                                     <div className="panel-header">
                                         <i class="fa fa-calendar-check-o"></i> { }
-                                        {mark? t("quizWithMark", {mark: mark}): t("quizHeader")}
+                                        {mark !== null? t("quizWithMark", {mark: mark}): t("quizHeader")}
                                     </div>                                    
                                 </Panel.Title>
                             </Panel.Heading>
@@ -92,9 +92,9 @@ class Rsvp extends React.Component {
                             </Panel.Body>
                         </Panel>
                         <Panel eventKey="RSVP" bsStyle="info">
-                            <Panel.Heading className={mark? "" : "panel-head-disabled"}>
+                            <Panel.Heading className={mark !== null? "" : "panel-head-disabled"}>
                                 <Panel.Title toggle>
-                                    <div className={mark? "panel-header" : "panel-header panel-head-disabled"}>
+                                    <div className={mark !== null? "panel-header" : "panel-header panel-head-disabled"}>
                                         <span class="glyphicon glyphicon-hand-right"></span> 
                                         { } RSVP
                                     </div>
