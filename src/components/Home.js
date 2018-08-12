@@ -12,10 +12,10 @@ class Home extends Component {
     }
 
     renderSlide = (id) =>{
-        const className = `bg slide${id}`;
+        const className = "bg";
         return (
             <Carousel.Item >
-                <div className={className} > </div>
+                <div className={className} style={{backgroundImage: `url("/img/slide${id}.jpg")`}} > </div>
                 <Carousel.Caption>                
                     <CountDown /> 
                 </Carousel.Caption>

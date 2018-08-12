@@ -14,18 +14,6 @@ html > body > div {
   background-size: cover;
 }
 
-.slide1 {
-  background-image: url("/img/slide1.jpg");
-}
-
-.slide2 {
-  background-image: url("/img/slide2.jpg");
-}
-
-.slide3 {
-  background-image: url("/img/slide3.jpg");
-}
-
 .carousel-inner{
   height: 100%;
 }
