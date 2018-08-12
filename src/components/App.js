@@ -25,6 +25,9 @@ class App extends Component {
             if (authUser !== this.props.authUser && authUser) {
                 this.props.login(authUser);
                 this.props.getUnreadMessagesCount(authUser.uid, false);
+                setTimeout(() => {
+                    this.setState({showApp: true});    
+                }, 5000);
             } else {
                 this.props.logout();
                 this.setState({showApp: true});

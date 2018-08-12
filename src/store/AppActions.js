@@ -63,10 +63,7 @@ export function login(userAuth) {
                 i18n.changeLanguage(user.language);     
                 return dispatch(userLogin(userAuth, user));
             })
-            .catch(() => setTimeout(() => {
-                auth.doSignOut();
-            }, 15000)
-            );
+            .catch(() =>console.log("user not found"));
     };
 }
 
