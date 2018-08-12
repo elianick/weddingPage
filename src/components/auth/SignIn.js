@@ -101,8 +101,7 @@ class SignIn extends Component {
                         this.props.i18n.language
                     ).then(() => {                      
                         this.props.login(user);                
-                        this.props.history.push(routes.HOME);
-                        return this.props.setActiveNav("");
+                        return this.props.history.push(routes.HOME);                        
                     })
                         .catch(error => {
                             this.setState(byPropKey("googleError", error));
