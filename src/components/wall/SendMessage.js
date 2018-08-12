@@ -63,7 +63,7 @@ class SendMessage extends React.Component {
         const btnDisabled = newMessage === "";  
         const popoverRight = (
             <Popover id="popover-positioned-right">
-                {t("popOverChat")}{' '}<i class="fa fa-smile-o"></i>
+                {t("popOverChat")}{" "}<i class="fa fa-smile-o"></i>
             </Popover>  );    
         return (
             <div><Row>
