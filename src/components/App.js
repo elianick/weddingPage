@@ -70,8 +70,8 @@ class App extends Component {
 
                     <Route exact path={routes.PASSWORD_FORGET}
                         component={PasswordReset} />
-
-                     <Route exact path={routes.ABOUT}
+                        
+                    <Route exact path={routes.ABOUT}
                         component={About} />
                 </div>
             </Router>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import CookieBanner from "react-cookie-banner";
 import { translate } from "react-i18next";
 import PropTypes from "prop-types";
 import { auth, db, firebase} from "../../firebase";
@@ -80,7 +81,7 @@ class SignIn extends Component {
                         else {
                             return this.setState({user:user, username:user.displayName, showInputCode: true, showLoading: false});
                         }
-                    }).catch( () => this.setState({showLoading: false}));               
+                    }).catch(() => this.setState({showLoading: false}));               
             })
             .catch(error => this.setState({googleError: error, showLoading: false}));
     };
@@ -120,7 +121,7 @@ class SignIn extends Component {
         const popoverRight = (
             <Popover id="popover-positioned-right">
                 {t("popOverLogin")}{" "}<i class="fa fa-smile-o"></i>
-            </Popover>  );
+            </Popover>);
 
         const isInvalid = (!showInputCode && (password === "" || email === "")) ||
                           (showInputCode && weddingCode === "") ;
@@ -132,80 +133,78 @@ class SignIn extends Component {
             );
         }
 
-        return (
-           
-            <Grid >
-                <Row><PageHeader className="App"></PageHeader> </Row>
-                <Row>
-                    <Col xs={10} xsOffset={1} sm={8} smOffset={2} md={6} mdOffset={3} >
-                        <Panel>
-                            <Panel.Heading>
-                                <Panel.Title className="login-header" componentClass="h3">{t("signIn")}</Panel.Title>
-                            </Panel.Heading>
-                            <Panel.Body>
-                                <form onSubmit={!showInputCode? this.onSubmit: this.handleOnSubmitWeddingCode}>
-                                    {!showInputCode && <div>
-                                        <FormGroup>
-                                            <ControlLabel>{t("emailAddress")}</ControlLabel>
-                                            <FormControl id="emailId" name="email" type="text" onChange={event => this.setState(byPropKey("email", event.target.value))} placeholder={t("enterMail")} />
-                                        </FormGroup>
-                                        <FormGroup>
-                                            <ControlLabel>{t("password")}</ControlLabel>
-                                            <FormControl id="passwordId" name="password" type="password" onChange={event => this.setState(byPropKey("password", event.target.value))} placeholder={t("enterPassword")} />
-                                        </FormGroup>                                   
-                                        <div className="div-login-button">
-                                            <Button className="btn-primary login-button" disabled={isInvalid} type="submit">{t("signIn")}</Button>                                             
-                                        </div>
-                                        <FormGroup>
-                                            {this.SignUpLink()}
-                                            {this.ResetPasswordLink()}
-                                        </FormGroup>
-                                        <div className="div-login-google">
-                                        {t("loginGoogleIntro")}
-                                        <OverlayTrigger trigger="click" placement="bottom" overlay={popoverRight}>
-                                        <i className="fa fa-info-circle wall-intro"></i>    
-                                        </OverlayTrigger>
-                                        </div>
-                                        <div className="google-login div-login-button"><img src="btn_google_signin_dark_normal_web.png" onClick={this.handleGoogleSignIn} alt="Sign in with Google"/></div>
-                                        <div className="div-login-google">
-                                        {t("cookiesInfo")} {" "} <i className="fa fa-info-fa fa-smile-o"></i>
-                                        </div>    
-                                          
-                                        {error && <p>{error.message}</p>}
-                                        {googleError && <p>{googleError.message}</p>}
-                                       
-                                       
-                                    </div>}
-                                    {showInputCode && <div>
-                                        <FormGroup>                                            
-                                            <p>{t("hiNewUser", {username: this.state.user.displayName})}</p>                                            
-                                        </FormGroup>
-                                        <FormGroup>
-                                            <ControlLabel>{t("weddingCode")}</ControlLabel>
-                                            <FormControl id="weddingCode" name="text" type="text" onChange={event => this.setState(byPropKey("weddingCode", event.target.value))} placeholder={t("weddingCode")} />                                            
-                                        </FormGroup>
-                                        <FormGroup>
-                                            <ControlLabel>{t("confirmYourName")}</ControlLabel>
-                                            <FormControl id="username" name="text" type="text"onChange={event => this.setState(byPropKey("username", event.target.value))} placeholder={this.state.username} />                                            
-                                        </FormGroup>
-                                        <FormGroup>                                             
-                                            <Button className="btn-primary" disabled={isInvalid} type="submit">{t("validateCode")}</Button>
+        return (        
+            <div>
+                <CookieBanner
+                    styles={{banner: { backgroundColor: "rgba(60, 60, 60, 0.8)", "z-index": 0 },message: { fontWeight: 500 }}}
+                    message={t("cookiesInfo")} onAccept={() => {}} cookie="user-has-accepted-cookies" />
+                <Grid>
+                    <Row><PageHeader className="App"></PageHeader> </Row>
+                    <Row>
+                        <Col xs={10} xsOffset={1} sm={8} smOffset={2} md={6} mdOffset={3} >
+                            <Panel>
+                                <Panel.Heading>
+                                    <Panel.Title className="login-header" componentClass="h3">{t("signIn")}</Panel.Title>
+                                </Panel.Heading>
+                                <Panel.Body>
+                                    <form onSubmit={!showInputCode? this.onSubmit: this.handleOnSubmitWeddingCode}>
+                                        {!showInputCode && <div>
+                                            <FormGroup>
+                                                <ControlLabel>{t("emailAddress")}</ControlLabel>
+                                                <FormControl id="emailId" name="email" type="text" onChange={event => this.setState(byPropKey("email", event.target.value))} placeholder={t("enterMail")} />
+                                            </FormGroup>
+                                            <FormGroup>
+                                                <ControlLabel>{t("password")}</ControlLabel>
+                                                <FormControl id="passwordId" name="password" type="password" onChange={event => this.setState(byPropKey("password", event.target.value))} placeholder={t("enterPassword")} />
+                                            </FormGroup>                                   
+                                            <div className="div-login-button">
+                                                <Button className="btn-primary login-button" disabled={isInvalid} type="submit">{t("signIn")}</Button>                                             
+                                            </div>
+                                            <FormGroup>
+                                                {this.SignUpLink()}
+                                                {this.ResetPasswordLink()}
+                                            </FormGroup>
+                                            <div className="div-login-google">
+                                                {t("loginGoogleIntro")}
+                                                <OverlayTrigger trigger="click" placement="bottom" overlay={popoverRight}>
+                                                    <i className="fa fa-info-circle wall-intro"></i>    
+                                                </OverlayTrigger>
+                                            </div>
+                                            <div className="google-login div-login-button"><img src="btn_google_signin_dark_normal_web.png" onClick={this.handleGoogleSignIn} alt="Sign in with Google"/></div>                                                                                 
+                                            {error && <p>{error.message}</p>}
                                             {googleError && <p>{googleError.message}</p>}
-                                        </FormGroup>
-                                    </div>}
-                                </form>
-                            </Panel.Body>
-                        </Panel>
-                    </Col>
-                </Row>
-                <Row>
-                <div className="footer-login">
-            Powered by Gioina Software House <i class="fa fa-creative-commons"></i> 2018
-            </div>
+                                       
+                                       
+                                        </div>}
+                                        {showInputCode && <div>
+                                            <FormGroup>                                            
+                                                <p>{t("hiNewUser", {username: this.state.user.displayName})}</p>                                            
+                                            </FormGroup>
+                                            <FormGroup>
+                                                <ControlLabel>{t("weddingCode")}</ControlLabel>
+                                                <FormControl id="weddingCode" name="text" type="text" onChange={event => this.setState(byPropKey("weddingCode", event.target.value))} placeholder={t("weddingCode")} />                                            
+                                            </FormGroup>
+                                            <FormGroup>
+                                                <ControlLabel>{t("confirmYourName")}</ControlLabel>
+                                                <FormControl id="username" name="text" type="text"onChange={event => this.setState(byPropKey("username", event.target.value))} placeholder={this.state.username} />                                            
+                                            </FormGroup>
+                                            <FormGroup>                                             
+                                                <Button className="btn-primary" disabled={isInvalid} type="submit">{t("validateCode")}</Button>
+                                                {googleError && <p>{googleError.message}</p>}
+                                            </FormGroup>
+                                        </div>}
+                                    </form>
+                                </Panel.Body>
+                            </Panel>
+                        </Col>
                     </Row>
-            </Grid>
-                        
-            
+                    <Row>
+                        <div className="footer-login">
+            Powered by Gioina Software House <i class="fa fa-creative-commons"></i> 2018
+                        </div>
+                    </Row>
+                </Grid> 
+            </div>         
             
         );
     }
