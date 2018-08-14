@@ -48,7 +48,7 @@ class Navigation extends React.Component {
                         <NavItem eventKey={routes.WALL} onSelect={this.handleLink(routes.WALL)}>{t("Wall")}
                             {unreadMessages>0 && <Badge className="badge-nav">{unreadMessages}</Badge>}                      
                         </NavItem>                        
-
+                        <NavItem eventKey={routes.ABOUT} onSelect={this.handleLink(routes.ABOUT)}>{t("About")}</NavItem>    
                         {isReviewer && <NavItem eventKey={routes.USER_LIST} onClick={this.handleLink(routes.USER_LIST)}>{t("User List")}</NavItem>}
 
                     </Nav>

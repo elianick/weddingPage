@@ -7,6 +7,7 @@ import UserListContainer from "./../container/UserListContainer";
 import WallContainer from "./../container/WallContainer";
 import SignInContainer from "./auth/SignIn";
 import SignUp from "./auth/SignUp";
+import About from "./About";
 import PasswordReset from "./auth/PasswordReset";
 import LogisticsContainer from "./../container/LogisticsContainer";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -69,6 +70,9 @@ class App extends Component {
 
                     <Route exact path={routes.PASSWORD_FORGET}
                         component={PasswordReset} />
+
+                     <Route exact path={routes.ABOUT}
+                        component={About} />
                 </div>
             </Router>
         );
