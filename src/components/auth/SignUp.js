@@ -62,7 +62,7 @@ class SignUp extends Component {
             
 
         return (
-            <div>
+            <div style={{height:"100%"}}>
                 <Grid>
                     <Row><PageHeader className="App"></PageHeader> </Row>
                     <Row>
@@ -102,8 +102,12 @@ class SignUp extends Component {
                             </Panel>
                         </Col>
                     </Row>
-                </Grid>              
+                </Grid> 
+                <div className="footer-login">
+                Powered by Gioina Software House <i class="fa fa-creative-commons"></i> 2018
+                </div>                                
             </div>
+            
         );
     }
 }
