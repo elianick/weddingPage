@@ -10,11 +10,11 @@ html > body > div {
 
 .carousel-inner > .item {
     -webkit-transition: -webkit-transform .6s ease-in-out;
-    -o-transition: -o-transform 1.6s ease-in-out !important;
-    transition: -webkit-transform 1.6s ease-in-out !important;
+    -o-transition: -o-transform 1.0s ease-in-out !important;
+    transition: -webkit-transform 1.0s ease-in-out !important;
     -o-transition: transform .6s ease-in-out !important;
-    transition: transform 1.6s ease-in-out !important;
-    transition: transform 1.6s ease-in-out, -webkit-transform 1.6s ease-in-out !important;
+    transition: transform 1.0s ease-in-out !important;
+    transition: transform 1.0s ease-in-out, -webkit-transform 1.0s ease-in-out !important;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -webkit-perspective: 1000px;
