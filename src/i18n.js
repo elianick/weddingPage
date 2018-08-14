@@ -51,6 +51,7 @@ i18n
                     signIn: "Sign In",
                     noAccount: "Don't have an account?",
                     forgotPassword: "Don't remember your password?",
+                    loginGoogleIntro: "Alternatively, you can sign in with your Google account:",
                     resetPassword: "Reset Password",
                     passwordReset: "Reset Password",
                     mailSent: "The instructions for resetting the password have been sent to your email",
@@ -110,12 +111,15 @@ i18n
                     forgotPassword: "Hai dimenticato la password?",
                     resetPassword: "Reimposta Password",
                     passwordReset: "Reimposta Password",
+                    loginGoogleIntro: "In alternativa, puoi fare il login con il tuo account Google",
+                    popOverLogin: "Ricordati che se scegli il login con Google, si aprirà un popup di Google, che noi non amministriamo (controlla la url del popup se non ti fidi!)",
+                    cookiesInfo: "Come il resto del mondo, anche il nostro sito usa i cookie, speriamo che tu sia d'accordo",
                     mailSent: "Ti abbiamo inviato un'email con le istruzioni per reimpostare la password",
                     weddingCode:"Codice segreto",
                     wrongCode:"Il codice segreto è sbagliato :-( ",
                     validateCode:"Verifica il codice",
                     hiNewUser: "Ciao {{username}}",
-                    confirmYourName: "Revisa che il tuo nome di Google ci permetta di capire chi sei :-)"
+                    confirmYourName: "Controlla che il tuo nome di Google ci permetta di capire chi sei :-)"
                 },
                 logistics:{
                 }              
@@ -166,12 +170,13 @@ i18n
                     forgotPassword: "¿Olvidaste la contraseña?",
                     resetPassword: "Resetear contraseña",
                     passwordReset: "Resetear contraseña",
+                    loginGoogleIntro: "En alternativa, puedes entrar con tu cuenta Google:",
                     mailSent: "Te hemos enviado un email con la instrucciones para resetear tu contraseña",
                     weddingCode:"Código secreto",
                     wrongCode:"El código secreto no es correcto :-( ",
                     validateCode:"Valida el código",
                     hiNewUser: "Hola {{username}}",
-                    confirmYourName: "Comprueba si el nombre que tienes en Google lo podamos entender :-)"
+                    confirmYourName: "Comprueba si el nombre que tienes en Google lo podemos entender :-)"
                 },
                 logistics:{
                 }                

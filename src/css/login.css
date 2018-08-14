@@ -24,4 +24,20 @@
     cursor: pointer;
     opacity: 1.5;
 }
+
+.div-login-google{
+    border-top: solid 2px #e7e7e7;
+    padding: 10px 0px;
+}
+
+.footer-login{
+  width: 100%;
+  padding: 10px 30px;
+  text-align: center;
+  font-size: 0.9em;
+  background-color: #e7e7e7;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+}
   

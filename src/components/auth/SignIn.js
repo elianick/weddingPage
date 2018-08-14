@@ -6,7 +6,7 @@ import { auth, db, firebase} from "../../firebase";
 import * as routes from "../../constants/routes";
 import { setActiveNav, login } from "./../../store/AppActions";
 import { connect } from "react-redux";
-import {Grid, Row, Col, Panel, FormGroup, ControlLabel, FormControl, Button, PageHeader} from "react-bootstrap";
+import {Grid, Row, Col, Panel, FormGroup, ControlLabel, FormControl, Button, PageHeader, Popover, OverlayTrigger} from "react-bootstrap";
 import "../../css/login.css";
 
 const mapStateToProps = () => ({});
@@ -117,6 +117,11 @@ class SignIn extends Component {
     render() {
         const { state:{email, password, error, googleError, showInputCode, weddingCode, showLoading}, props:{t}} = this;
 
+        const popoverRight = (
+            <Popover id="popover-positioned-right">
+                {t("popOverLogin")}{" "}<i class="fa fa-smile-o"></i>
+            </Popover>  );
+
         const isInvalid = (!showInputCode && (password === "" || email === "")) ||
                           (showInputCode && weddingCode === "") ;
 
@@ -151,16 +156,25 @@ class SignIn extends Component {
                                         <div className="div-login-button">
                                             <Button className="btn-primary login-button" disabled={isInvalid} type="submit">{t("signIn")}</Button>                                             
                                         </div>
-                                        <div className="google-login div-login-button"><img src="btn_google_signin_dark_normal_web.png" onClick={this.handleGoogleSignIn} alt="Sign in with Google"/></div>
-                                             
-                                          
-                                        {error && <p>{error.message}</p>}
-                                        {googleError && <p>{googleError.message}</p>}
-                                       
                                         <FormGroup>
                                             {this.SignUpLink()}
                                             {this.ResetPasswordLink()}
                                         </FormGroup>
+                                        <div className="div-login-google">
+                                        {t("loginGoogleIntro")}
+                                        <OverlayTrigger trigger="click" placement="bottom" overlay={popoverRight}>
+                                        <i className="fa fa-info-circle wall-intro"></i>    
+                                        </OverlayTrigger>
+                                        </div>
+                                        <div className="google-login div-login-button"><img src="btn_google_signin_dark_normal_web.png" onClick={this.handleGoogleSignIn} alt="Sign in with Google"/></div>
+                                        <div className="div-login-google">
+                                        {t("cookiesInfo")} {" "} <i className="fa fa-info-fa fa-smile-o"></i>
+                                        </div>    
+                                          
+                                        {error && <p>{error.message}</p>}
+                                        {googleError && <p>{googleError.message}</p>}
+                                       
+                                       
                                     </div>}
                                     {showInputCode && <div>
                                         <FormGroup>                                            
@@ -184,8 +198,15 @@ class SignIn extends Component {
                         </Panel>
                     </Col>
                 </Row>
+                <Row>
+                <div className="footer-login">
+            Powered by Gioina Software House <i class="fa fa-creative-commons"></i> 2018
+            </div>
+                    </Row>
             </Grid>
-          
+                        
+            
+            
         );
     }
 }
