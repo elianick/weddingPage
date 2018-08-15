@@ -19,8 +19,7 @@ class Wall extends React.Component {
         };        
     }
 
-    componentDidMount() {
-        console.log("Wall props", this.props);
+    componentDidMount() {        
         const {props: {userReviewed, userLogged, isReviewer}} = this;
         const uid = getUid(userLogged, userReviewed);
         this.props.loadMessages(uid, isReviewer);  
