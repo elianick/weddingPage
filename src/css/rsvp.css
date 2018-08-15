@@ -129,6 +129,12 @@ div.container{
     background: #3d89cc;
     color: white;
   }
+
+.scroll-button{
+  background: #3d89cc !important;
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+}
   
 .quiz-pannel{
   padding-left: 0 !important;

@@ -35,7 +35,7 @@ class Rsvp extends React.Component {
         db.getQuizResult(this.props.authUser.uid).then(
             snapshot => {
                 const data = snapshot.toJSON();                
-                if (data == null || data.mark === null)
+                if (data == null || data.mark === null || !data.mark)
                     return this.setState({activePanel: "QUIZ", showSection:true, showPopup: !data });                
                 const mark = data.mark;            
                 return this.setState({mark: mark, activePanel: justAnswered? "QUIZ" : "RSVP", showSection:true});

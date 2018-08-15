@@ -5,8 +5,10 @@ import { translate } from "react-i18next";
 import PropTypes from "prop-types";
 import { auth, db, firebase} from "../../firebase";
 import * as routes from "../../constants/routes";
-import { setActiveNav, login } from "./../../store/AppActions";
+import { setActiveNav, login, sendMessage } from "./../../store/AppActions";
 import { connect } from "react-redux";
+import {createNotification} from "../common";
+import { MAIL_CODES } from "../../constants/appConstant";
 import {Grid, Row, Col, Panel, FormGroup, ControlLabel, FormControl, Button, PageHeader, Popover, OverlayTrigger} from "react-bootstrap";
 import "../../css/login.css";
 
@@ -17,6 +19,9 @@ const mapDispatchToProps = dispatch => ({
     },
     login: (authUser) => {
         dispatch(login(authUser));
+    },
+    sendMessage: (message, uid, notification) => {
+        dispatch(sendMessage(message, uid, true, notification));
     }
 });
 
@@ -101,7 +106,12 @@ class SignIn extends Component {
                         user.email, 
                         this.props.i18n.language
                     ).then(() => {                      
-                        this.props.login(user);                
+                        this.props.login(user);
+                        const notification = createNotification(
+                            {email:"elia.silvia.08122018@gmail.com", username: "Elia & Silvia"}, 
+                            {email:user.email, language: this.props.i18n.language },
+                            MAIL_CODES.WELCOME_MESSAGE, this.props.t("emailNewAccount"));
+                        this.props.sendMessage(this.props.t("emailNewAccount"),user.uid,notification);
                         return this.props.history.push(routes.HOME);                        
                     })
                         .catch(error => {

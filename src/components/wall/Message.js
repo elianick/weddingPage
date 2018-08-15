@@ -26,6 +26,7 @@ class Message extends Component {
         const isMyMessage = uid === message.uid;
         const newMessage = !isMyMessage && !message.read;
         
+        
         return (
             <div>
                 <Col xs={11} xsOffset={!isMyMessage? 0:1}
@@ -37,12 +38,13 @@ class Message extends Component {
                             <h5 className={!isMyMessage? "": "text-right" }>
                                 <strong>
                                 {newMessage && <h4><Label bsStyle="primary" className="new-message">{t("NEW")}</Label></h4>}                    
+                                {message.read && isMyMessage && <i class="material-icons" style={{"font-size":"28px","color":"red"}}>done_all</i>}
                                     {new Date(message.creationDate).toLocaleTimeString()} {new Date(message.creationDate).toLocaleDateString()} - {message.author} 
                                 </strong> 
                             </h5>
                         </Panel.Heading>
                         <Panel.Body className="message-body">
-                            <p className={!isMyMessage? "": "text-right" }> {message.text}</p>
+                            <div className={!isMyMessage? "": "text-right" }> {message.text.split('\n').map( line => <div>{line}</div>)}</div>
                         </Panel.Body>
                     </Panel>
                 </Col>

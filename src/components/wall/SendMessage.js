@@ -12,7 +12,7 @@ class SendMessage extends React.Component {
         this.state = {
             newMessage: "",
             touched: false,
-            panelOpen: false
+            panelOpen: true
         };
         this.handleFormChanges = this.handleFormChanges.bind(this);
         this.handlePanelClick = this.handlePanelClick.bind(this);
