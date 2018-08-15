@@ -31,7 +31,7 @@ class Home extends Component {
 
                 </Carousel>
                 <div className="footer-general">
-            Powered by Gioina Software House <i class="fa fa-creative-commons"></i> 2018 Version 1.0 Beta
+            Powered with <i class="fa fa-heart"></i> by Gioina Software House <i class="fa fa-creative-commons"></i> 2018 v1.0
                 </div>       
             </div>
             

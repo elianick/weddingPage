@@ -27,7 +27,7 @@ class About extends Component {
                 <Grid style={{width:"90%"}}>
                     <Row><PageHeader className="App">Backstage</PageHeader> </Row>
                     <Row>
-                        <Col xs={12} md={6}>       
+                        <Col xs={12} md={6} style={{"margin-bottom": "45px"}}>       
                             {t("silvia1")}
                             <br/>{t("elia1")}
                             <br/>{t("silvia2")}
@@ -37,12 +37,17 @@ class About extends Component {
                             <br/>{t("learnings")}
                             <br/>{t("conclusion")} {" "} <i class="fa fa-smile-o"></i>
                         </Col>
-                        <Col xs={12} md={6} style={{"margin-top": "20px", "margin-bottom": "20px"}}>
+                        <Col xs={12} md={6} style={{"margin-bottom": "50px"}}>
                             <Carousel >                   
                                 {slidesId.map(this.renderSlide)}
                             </Carousel>
                         </Col>
 
+                    </Row>
+                    <Row>
+                        <div className="footer-login">
+                        Powered with <i class="fa fa-heart"></i> by Gioina Software House <i class="fa fa-creative-commons"></i> 2018 v1.0
+                        </div>
                     </Row>
                 </Grid>
             </div>
