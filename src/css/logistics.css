@@ -28,8 +28,8 @@
 }
 
 .address-row{
-    font-family: Paprika;
-    font-size: small;
-    font-style: normal;
+    font-style: italic;
     margin-left: 30px !important;
+    margin-top: 10px;
+    margin-bottom: 8px;
 }

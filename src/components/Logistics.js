@@ -90,6 +90,8 @@ class Logistics extends React.Component {
                             <Row className="address-row">{t("addressElia")}
                                 <br/> {t("addressSilvia")}
                             </Row>
+                            {t("hotels")}
+                            <br/> 
                             <br/> <i class="glyphicon glyphicon-plane"></i> { }{t("airports")}
                             <br/>
                             <br/> <i class="glyphicon glyphicon-alert"></i> { }{t("transport")}
@@ -106,7 +108,7 @@ class Logistics extends React.Component {
                             <br/>
                             <br/><strong>TREVISO. </strong>{t("treviso")}
                             <br/>
-                            <br/><strong>PADOVA. </strong>{t("transport")}
+                            <br/><strong>PADOVA. </strong>{t("padova")}
                             <br/>
                             <br/><strong>BASSANO DEL GRAPPA. </strong>{t("bassano")}
                             <br/>
@@ -124,6 +126,19 @@ class Logistics extends React.Component {
                         </Panel.Body>
                     </Panel>
                     <Panel eventKey="4">
+                        <Panel.Heading>
+                            <Panel.Title className="logisticsPanelHeader" toggle>
+                                <i class="fa fa-briefcase"></i> { } {t("whatToBring")}</Panel.Title>
+                        </Panel.Heading>
+                        <Panel.Body collapsible>
+                            {t("whatToBring1")}
+                            <br/>
+                            <br/>{t("whatToBring2")}
+                            <br/>
+                            <br/>{t("whatToBring3")} { } <i class="glyphicon glyphicon-heart"></i>
+                        </Panel.Body>
+                    </Panel>
+                    <Panel eventKey="5">
                         <Panel.Heading>
                             <Panel.Title className="logisticsPanelHeader" toggle>
                                 <i class="glyphicon glyphicon-gift"></i> { } {t("giftsHeader")}</Panel.Title>
