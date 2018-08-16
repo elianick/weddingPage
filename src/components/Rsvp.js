@@ -96,7 +96,7 @@ class Rsvp extends React.Component {
                                 <Panel.Title toggle>
                                     <div className={mark !== null? "panel-header" : "panel-header panel-head-disabled"}>
                                         <span class="glyphicon glyphicon-hand-right"></span> 
-                                        { } RSVP
+                                        { } RSVP ({t("RSVPexplain")})
                                     </div>
                                 </Panel.Title>
                             </Panel.Heading >
