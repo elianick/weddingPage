@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { translate } from "react-i18next";
 import { withRouter } from "react-router-dom";
+import { sendMessage } from "./../../store/AppActions";
+import { connect } from "react-redux";
+import {createNotification} from "../common";
+import { MAIL_CODES } from "../../constants/appConstant";
 import { auth, db, firebase } from "../../firebase";
 import {Grid, Row, Col, Panel, FormGroup, ControlLabel, FormControl, Button, PageHeader } from "react-bootstrap";
 import * as routes from "./../../constants/routes";
@@ -19,6 +23,14 @@ const byPropKey = (propertyName, value) => () => ({
     [propertyName]: value
 }); 
 
+const mapStateToProps = () => ({});
+const mapDispatchToProps = dispatch => ({
+    sendMessage: (message, uid, notification) => {
+        dispatch(sendMessage(message, uid, true, notification));
+    }
+});
+
+
 class SignUp extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +40,8 @@ class SignUp extends Component {
     handleOnSubmit = (event) => {
         this.setState({loading:true});
         const { username, email, passwordOne, weddingCode } = this.state;
-        const { history } = this.props;        
+        const { history } = this.props;
+        const date = new Date();        
         const weddingFunction = firebase.functions.httpsCallable("validateWeedingCode");
         weddingFunction({code:weddingCode})
             .then(result => {                
@@ -37,7 +50,19 @@ class SignUp extends Component {
                         .then(user => {                            
                             // Create a user in your own accessible Firebase Database too
                             db.doCreateUser(user.user.uid, username,username, email, this.props.i18n.language)
-                                .then(() => {                      
+                                .then(() => {    
+                                    const notification = createNotification(
+                                        {email:"elia.silvia.08122018@gmail.com", username: "Elia & Silvia"}, 
+                                        {email:email, language: this.props.i18n.language },
+                                        MAIL_CODES.WELCOME_MESSAGE, this.props.t("emailNewAccount"));
+                                    this.props.sendMessage(
+                                        {text: this.props.t("emailNewAccount"),
+                                        author:"Elia & Silvia",
+                                        isReviewer:true,
+                                        read:false,
+                                        uid:user.user.uid,
+                                        creationDate: date.toJSON()
+                                    },user.user.uid,notification);                  
                                     return history.push(routes.HOME);
                                 })
                                 .catch(error => {
@@ -115,5 +140,6 @@ class SignUp extends Component {
         );
     }
 }
+const SignUpContainer = connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUp));
 
-export default translate("login")(withRouter(SignUp));
+export default translate("login")(withRouter(SignUpContainer));

@@ -13,7 +13,8 @@ class NewRequest extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-            shakeCookie: false,           
+            shakeCookie: false,   
+            formInvalid: false,       
             isConfirmed: "",            
             moreThenOne: "N",
             intollerance: "",
@@ -59,7 +60,11 @@ class NewRequest extends React.Component {
     }
 
     handleSubmit = () => {    
-        this.setState({prevLastUpdate: this.state.lastUpdate});
+        if (!this.isPersonsValid()){
+            this.setState({formInvalid:true});
+            return;
+        }
+        this.setState({prevLastUpdate: this.state.lastUpdate, formInvalid:false});
         const rsvp ={
             isConfirmed : this.state.isConfirmed,
             moreThenOne: this.state.moreThenOne,
@@ -199,7 +204,7 @@ class NewRequest extends React.Component {
     });
 
     render() {//eslint-disable-line complexity
-        const { props: { t }, state: { intollerance, isConfirmed, moreThenOne, persons, lastUpdate, prevLastUpdate, stayNight, foreign, arrival, saved, ride} } = this;        
+        const { props: { t }, state: { intollerance, formInvalid, isConfirmed, moreThenOne, persons, lastUpdate, prevLastUpdate, stayNight, foreign, arrival, saved, ride} } = this;        
         const btnDisabled = isConfirmed === "" ||
         (isConfirmed === "Y" && !this.isPersonsValid());     
         let flash = false;
@@ -323,8 +328,9 @@ class NewRequest extends React.Component {
                 
                 }
                 <Row>                    
-                    <Button disabled={btnDisabled} className="text-with-margin-top btn  btn-primary form-inline" onClick={this.handleSubmit}>{t("save")}</Button>
-                    <Button bsStyle="link" className={lastUpdateClass}>{lastUpdate && t("lastUpdate", {time: lastUpdate})}</Button>                                   
+                    <Button className="text-with-margin-top btn  btn-primary form-inline" onClick={this.handleSubmit}>{t("save")}</Button>
+                    {!formInvalid && <Button bsStyle="link" className={lastUpdateClass}>{lastUpdate && t("lastUpdate", {time: lastUpdate})}</Button>}
+                    {formInvalid && <div> error </div>}                            
                 </Row>
                 <Row><Col xs={12} md={8} mdOffset={2}><div className="text-with-margin-top">
                     {saved &&
