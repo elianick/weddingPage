@@ -9,6 +9,9 @@ import {db} from "../firebase";
 
 class Navigation extends React.Component {
 
+    componentDidMount() {
+        this.props.i18n.changeLanguage(this.props.i18n.language);         
+    }
     handleLink = route => () => {     
         this.props.setActiveNav(route);
         this.props.history.push({//eslint-disable-line fp/no-mutating-methods
@@ -28,7 +31,8 @@ class Navigation extends React.Component {
     render() {
         const { props: { t, i18n, authUser, activeNav, isReviewer, unreadMessages } } = this;
        
-        const language = i18n.language.substring(0,2).toUpperCase();;
+        const language = i18n.language.substring(0,2).toUpperCase();
+        console.log(language, i18n.language);
         
         return (
             <Navbar collapseOnSelect>

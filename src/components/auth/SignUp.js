@@ -67,7 +67,7 @@ class SignUp extends Component {
         }
         return (
             <div style={{height:"100%"}}>
-                <Grid style={{"margin-bottom":"40px"}}>
+                <Grid style={{"marginBottom":"40px"}}>
                     <Row><PageHeader className="App"></PageHeader> </Row>
                     <Row>
                         <Col xs={10} xsOffset={1} sm={8} smOffset={2} md={6} mdOffset={3} >
