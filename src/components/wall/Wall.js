@@ -10,12 +10,25 @@ import { withRouter } from "react-router-dom";
 import {Grid} from "react-bootstrap";
 class Wall extends React.Component {
 
-    componentDidMount() {
-        console.log("Wall props", this.props);
+    constructor(props){
+        super(props);
+        this.state = {
+            uid: getUid(this.props.userLogged, this.props.userReviewed),
+            isReviewer: this.props.isReviewer,
+            refreshMessages: setInterval(() => this.props.loadMessages(this.state.uid, this.state.isReviewer), 10000)
+        };        
+    }
+
+    componentDidMount() {        
         const {props: {userReviewed, userLogged, isReviewer}} = this;
         const uid = getUid(userLogged, userReviewed);
-        this.props.loadMessages(uid, isReviewer);    
+        this.props.loadMessages(uid, isReviewer);  
+        this.setState({isReviewer: isReviewer, uid: uid});        
         this.props.setActiveNav("/wall");
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.state.refreshMessages);
     }
 
     render() {

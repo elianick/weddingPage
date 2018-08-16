@@ -7,12 +7,11 @@ export const doCreateUser = (uid, username, googleDisplayName, email, language) 
         username: username,
         googleDisplayName: googleDisplayName,
         email: email,
-        language:language
-
+        language:language.substring(0,2).toUpperCase()
     });
 export const updateUserLanguage = (uid, language) =>
     db.ref(`users/${uid}`).update({      
-        language:language
+        language:language.substring(0,2).toUpperCase()
 
     });
 

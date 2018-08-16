@@ -62,7 +62,8 @@ i18n
                     wrongCode:" The Wedding code is incorrect :-( ",
                     validateCode:"Validate Code",
                     hiNewUser: "Hi {{username}}",
-                    confirmYourName: "Review your name, we need it for knowing who you are :-)"
+                    confirmYourName: "Review your name, we need it for knowing who you are :-)",
+                    emailNewAccount: "Hi! Thanks for signing up. With this gesture, you already rewarded the countless hours we spent coding :)\nWe hate SPAM; we will use this email address only to notify you when you have a new message from us in the chat, or about any updates on the website.\nHugs,"
                 },
                 logistics:{
                     whatToBring:"What you should bring",
@@ -136,7 +137,8 @@ i18n
                     wrongCode:"Il codice segreto è sbagliato :-( ",
                     validateCode:"Verifica il codice",
                     hiNewUser: "Ciao {{username}}",
-                    confirmYourName: "Controlla che il tuo nome di Google ci permetta di capire chi sei :-)"
+                    confirmYourName: "Controlla che il tuo nome di Google ci permetta di capire chi sei :-)",
+                    emailNewAccount:"Ciao! Grazie per esserti registrato sul nostro sito web. Con questo gesto, ci hai già ripagato delle innumerevoli ore che abbiamo perso programmando :)\nOdiamo la SPAM, useremo questo indirizzo e-mail solo per avvisarti di un nuovo messaggio da parte nostra nella chat, o di eventuali aggiornamenti del sito.\nUn abbraccio"
                 },
                 logistics:{
                     whatToBring: "Cosa portarsi",
@@ -210,7 +212,8 @@ i18n
                     wrongCode:"El código secreto no es correcto :-( ",
                     validateCode:"Valida el código",
                     hiNewUser: "Hola {{username}}",
-                    confirmYourName: "Comprueba si el nombre que tienes en Google lo podemos entender :-)"
+                    confirmYourName: "Comprueba si el nombre que tienes en Google lo podemos entender :-)",
+                    emailNewAccount: "¡Hola! Gracias por registrarte en nuestra web. Este gesto ya es una recompensa por todas las horas que hemos perdido programando :) \nOdiamos el SPAM; utilizaremos este email solo para avisarte de que tienes un mensaje nuestro en el chat, o de que hay actualizaciones en la página. \nAbrazos,"
                 },
                 logistics:{
                     whatToBring: "Qué llevar",

@@ -7,7 +7,7 @@ import {clone} from "lodash";
 import { db } from "../../firebase";
 
 const questionIds = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ,11 ,12 ,13 ,14];
-const totalQuestions = 2;
+const totalQuestions = 15;
 class Quiz extends React.Component {
 
     constructor(props) {
@@ -35,6 +35,10 @@ class Quiz extends React.Component {
 
     scrollToBottom = () => {        
         this.messagesEnd.scrollIntoView({behavior: "smooth"});        
+    }
+
+    scrollToTop = () => {
+        this.quizTop.scrollIntoView({behavior: "smooth"});        
     }
   
     getQuizResult = () => {
@@ -201,7 +205,7 @@ class Quiz extends React.Component {
                     if (element === this.state.correctAnswers[i]){
                         correctAnswers ++;
                     } else {
-                       wrongAnswers ++;
+                        wrongAnswers ++;
                     }                    
                 }
             });             
@@ -211,63 +215,80 @@ class Quiz extends React.Component {
         return (
             <div className="quiz-progress-bar">
                 <ProgressBar >
-                    <ProgressBar  bsStyle="success" now={correctAnswers} key={1} />
-                    <ProgressBar  bsStyle="danger" now={wrongAnswers} key={2} />                
+                    <ProgressBar bsStyle="success" now={correctAnswers} key={1} />
+                    <ProgressBar bsStyle="danger" now={wrongAnswers} key={2} />                
                 </ProgressBar>
             </div>
-            );
+        );
     }
 
     render() {
         const {props:{t}, state:{questions, answered, nextQuestionEnabled, mark} } = this;        
         return (
-            <div>
-                <Grid> 
-                    <Row><div className="quiz-intro"> {t("quizIntro")} </div></Row>
-                    {this.progressBar()}
-                    {questions.map(this.renderQuestion)}
+            <Grid> 
+                <Row>
+                    <Col xs={10} md={11}>
+                        <div className="quiz-intro" ref={(el) => { this.quizTop = el; }}> {t("quizIntro")} </div>
+                    </Col>
+                    {mark && <Col xs={2} md={1}>                    
+                        <a onClick={this.scrollToBottom} class="btn btn-info scroll-button">
+                            <span class="glyphicon glyphicon-arrow-down"></span><br/></a>
+                    </Col>}
+                </Row>
+                {this.progressBar()}
+                {questions.map(this.renderQuestion)}
                   
-                    {answered < totalQuestions || answered===totalQuestions && nextQuestionEnabled? <div>                       
-                    </div>  
-                        : 
-                        <Row><Col xs={12} md={11}>
+                {answered < totalQuestions || answered===totalQuestions && nextQuestionEnabled? <div>                       
+                </div>  
+                    : 
+                    <div>
+                        <Row><Col xs={10} md={11}>
                             <Alert>
                                 {t("yourResultIs")}<strong> {mark}/{totalQuestions}</strong>. {t("checkWhoYouAre")} 
                                 { } <i class="fa fa-smile-o"></i><i class="fa fa-smile-o"></i><i class="fa fa-smile-o"></i>
                             </Alert>
-                            <Table bordered condensed>
-                                <thead>
-                                    <tr>
-                                        <th>{t("result")}</th>
-                                        <th>{t("whoYouAre")}</th>                                
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr className={mark >= 12? "your-result": ""}>
-                                        <td>12-15</td>
-                                        <td>{t("result12")}</td>
-                                    </tr>
-                                    <tr className={mark < 12 && mark >=7? "your-result": ""}>
-                                        <td>7-11</td>
-                                        <td>{t("result7")}</td>
-                                    </tr>
-                                    <tr className={mark < 7 && mark >=2? "your-result": ""}>
-                                        <td>2-6</td>
-                                        <td>{t("result2")}</td>
-                                    </tr>
-                                    <tr className={mark <2? "your-result": ""}>
-                                        <td>0-1</td>
-                                        <td>{t("result0")}</td>
-                                    </tr>
-                                </tbody>
-                            </Table>
-                        </Col></Row>
-                    }             
-                </Grid>
-                <div style={{ float:"left", clear: "both" }}
-                    ref={(el) => { this.messagesEnd = el; }}>
-                </div>
-            </div>             
+                            <div style={{ float:"left", clear: "both" }}
+                                ref={(el) => { this.messagesEnd = el; }}>
+                            </div>
+                        </Col>
+                        <Col xs={2} md={1}>                    
+                            <a onClick={this.scrollToTop} class="btn btn-info scroll-button">
+                                <span class="glyphicon glyphicon-arrow-up"></span><br/></a>
+                        </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} md={11}>
+                                <Table bordered condensed>
+                                    <thead>
+                                        <tr>
+                                            <th>{t("result")}</th>
+                                            <th>{t("whoYouAre")}</th>                                
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr className={mark >= 12? "your-result": ""}>
+                                            <td>12-15</td>
+                                            <td>{t("result12")}</td>
+                                        </tr>
+                                        <tr className={mark < 12 && mark >=7? "your-result": ""}>
+                                            <td>7-11</td>
+                                            <td>{t("result7")}</td>
+                                        </tr>
+                                        <tr className={mark < 7 && mark >=2? "your-result": ""}>
+                                            <td>2-6</td>
+                                            <td>{t("result2")}</td>
+                                        </tr>
+                                        <tr className={mark <2? "your-result": ""}>
+                                            <td>0-1</td>
+                                            <td>{t("result0")}</td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                            </Col>                   
+                        </Row>
+                    </div>
+                }             
+            </Grid>                                  
         );
     }
 }

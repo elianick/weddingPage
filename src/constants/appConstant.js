@@ -18,9 +18,8 @@ export const CLEAN_PENDING_MESSAGES_TO_READ_TIMEOUT = 3000;
 
 export const REVIEWER_MAIL = "REVIEWER_MAIL";
 export const MAIL_CODES = {
-    NEW_REQUEST: "00",
-    NEW_MESSAGE: "01",
-    REQUEST_STATUS_CHANGED: "02"
+    WELCOME_MESSAGE: "00",
+    NEW_MESSAGE: "01"    
 };
 
 export const TRANSLATIONS = "translations";

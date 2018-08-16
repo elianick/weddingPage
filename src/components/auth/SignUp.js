@@ -11,7 +11,8 @@ const INITIAL_STATE = {
     email: "",
     passwordOne: "",
     passwordTwo: "",    
-    error: null
+    error: null,
+    loading:false
 };
 
 const byPropKey = (propertyName, value) => () => ({
@@ -25,6 +26,7 @@ class SignUp extends Component {
     }
 
     handleOnSubmit = (event) => {
+        this.setState({loading:true});
         const { username, email, passwordOne, weddingCode } = this.state;
         const { history } = this.props;        
         const weddingFunction = firebase.functions.httpsCallable("validateWeedingCode");
@@ -39,31 +41,33 @@ class SignUp extends Component {
                                     return history.push(routes.HOME);
                                 })
                                 .catch(error => {
-                                    this.setState(byPropKey("error", error));
+                                    this.setState({"error": error, loading:false});
                                 });
                         })
-                        .catch(error => this.setState(byPropKey("error", error)))
+                        .catch(error => this.setState({"error": error, loading:false}))
                 }                
                 else {                    
                     this.setState(byPropKey("error", {message: this.props.t("wrongCode")} ));
+                    this.setState({loading:false});
                 }
-            }).catch(error => this.setState(byPropKey("error", error)));
+            }).catch(error => this.setState({"error": error, loading:false}));
         event.preventDefault();
     }
 
     render() {
 
-        const { props:{t}, state:{username, email, passwordOne, passwordTwo, error }} = this;        
+        const { props:{t}, state:{username, email, passwordOne, passwordTwo, error,loading }} = this;        
         const isInvalid = 
             passwordOne !== passwordTwo ||
             passwordOne === "" ||
             email === "" ||
             username === "";
-            
-
+        if (loading){
+            return (<div className="loading-container"><div className="loading"></div></div>);
+        }
         return (
             <div style={{height:"100%"}}>
-                <Grid style={{"margin-bottom":"40px"}}>
+                <Grid style={{"marginBottom":"40px"}}>
                     <Row><PageHeader className="App"></PageHeader> </Row>
                     <Row>
                         <Col xs={10} xsOffset={1} sm={8} smOffset={2} md={6} mdOffset={3} >

@@ -5,8 +5,10 @@ import { translate } from "react-i18next";
 import PropTypes from "prop-types";
 import { auth, db, firebase} from "../../firebase";
 import * as routes from "../../constants/routes";
-import { setActiveNav, login } from "./../../store/AppActions";
+import { setActiveNav, login, sendMessage } from "./../../store/AppActions";
 import { connect } from "react-redux";
+import {createNotification} from "../common";
+import { MAIL_CODES } from "../../constants/appConstant";
 import {Grid, Row, Col, Panel, FormGroup, ControlLabel, FormControl, Button, PageHeader, Popover, OverlayTrigger} from "react-bootstrap";
 import "../../css/login.css";
 
@@ -17,6 +19,9 @@ const mapDispatchToProps = dispatch => ({
     },
     login: (authUser) => {
         dispatch(login(authUser));
+    },
+    sendMessage: (message, uid, notification) => {
+        dispatch(sendMessage(message, uid, true, notification));
     }
 });
 
@@ -91,6 +96,7 @@ class SignIn extends Component {
     
     handleOnSubmitWeddingCode = (event) => {        
         const { state:{weddingCode, user, username}} = this;
+        const date = new Date();
         const weddingFunction = firebase.functions.httpsCallable("validateWeedingCode");        
         weddingFunction({code: weddingCode})
             .then(result => {                
@@ -101,7 +107,19 @@ class SignIn extends Component {
                         user.email, 
                         this.props.i18n.language
                     ).then(() => {                      
-                        this.props.login(user);                
+                        this.props.login(user);
+                        const notification = createNotification(
+                            {email:"elia.silvia.08122018@gmail.com", username: "Elia & Silvia"}, 
+                            {email:user.email, language: this.props.i18n.language },
+                            MAIL_CODES.WELCOME_MESSAGE, this.props.t("emailNewAccount"));
+                        this.props.sendMessage(
+                            {text: this.props.t("emailNewAccount"),
+                            author:"Elia & Silvia",
+                            isReviewer:true,
+                            read:false,
+                            uid:user.uid,
+                            creationDate: date.toJSON()
+                        },user.uid,notification);
                         return this.props.history.push(routes.HOME);                        
                     })
                         .catch(error => {
@@ -138,7 +156,7 @@ class SignIn extends Component {
                 <CookieBanner
                     styles={{banner: { backgroundColor: "rgba(60, 60, 60, 0.8)", "z-index": 0 },message: { fontWeight: 500 }}}
                     message={t("cookiesInfo")} onAccept={() => {}} cookie="user-has-accepted-cookies" />
-                <Grid style={{"margin-bottom":"40px"}}>
+                <Grid style={{"marginBottom":"40px"}}>
                     <Row><PageHeader className="App"></PageHeader> </Row>
                     <Row>
                         <Col xs={10} xsOffset={1} sm={8} smOffset={2} md={6} mdOffset={3} >
@@ -186,7 +204,7 @@ class SignIn extends Component {
                                             </FormGroup>
                                             <FormGroup>
                                                 <ControlLabel>{t("confirmYourName")}</ControlLabel>
-                                                <FormControl id="username" name="text" type="text"onChange={event => this.setState(byPropKey("username", event.target.value))} placeholder={this.state.username} />                                            
+                                                <FormControl id="username" name="text" type="text" value ={this.state.username} onChange={event => this.setState(byPropKey("username", event.target.value))} placeholder={this.state.username} />                                            
                                             </FormGroup>
                                             <FormGroup>                                             
                                                 <Button className="btn-primary" disabled={isInvalid} type="submit">{t("validateCode")}</Button>

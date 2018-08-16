@@ -22,7 +22,7 @@ class MessageList extends React.Component {
         return (
             <div>
                 {messages && Object.keys(messages).map(key => (
-                    <Col key={key} >
+                    <Col key={messages[key].creationDate} >
                         <MessageContainer message={messages[key]} />
                     </Col>))}
             </div>
