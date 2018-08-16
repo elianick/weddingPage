@@ -147,7 +147,9 @@ class Logistics extends React.Component {
                             {t("giftsIntro")} { } <i class="glyphicon glyphicon-heart"></i>
                             <br/>
                             <br/>{t("giftsExpl1")}
+                            <br/>{t("accountHolder")} Elia Nicastro - Silvia Piovesan
                             <br/>{this.state.account} 
+                            <br/>BIC/SWIFT: OPENESMM
                             <br/>
                             <br/>{t("giftsExpl2")}
                         </Panel.Body>

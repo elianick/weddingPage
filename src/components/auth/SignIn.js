@@ -48,6 +48,7 @@ class SignIn extends Component {
     }
 
     onSubmit = (event) => {
+        this.setState({showLoading: true});
         const {
             email,
             password
@@ -61,7 +62,7 @@ class SignIn extends Component {
                 return this.props.setActiveNav("");
             })
             .catch(error => {
-                this.setState(byPropKey("error", error));
+                return this.setState({"error": error, showLoading:false});
             });
 
 

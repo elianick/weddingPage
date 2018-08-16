@@ -27,7 +27,7 @@ class About extends Component {
                 <Grid style={{width:"90%"}}>
                     <Row><PageHeader className="App">Backstage</PageHeader> </Row>
                     <Row>
-                        <Col xs={12} md={6} style={{"margin-bottom": "45px"}}>       
+                        <Col xs={12} style={{"margin-bottom": "45px"}}>       
                             {t("silvia1")}
                             <br/>{t("elia1")}
                             <br/>{t("silvia2")}
@@ -37,7 +37,7 @@ class About extends Component {
                             <br/>{t("learnings")}
                             <br/>{t("conclusion")} {" "} <i class="fa fa-smile-o"></i>
                         </Col>
-                        <Col xs={12} md={6} style={{"margin-bottom": "50px"}}>
+                        <Col xs={12} md={6} mdOffset={3} style={{"margin-bottom": "50px"}}>
                             <Carousel >                   
                                 {slidesId.map(this.renderSlide)}
                             </Carousel>
