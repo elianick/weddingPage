@@ -330,7 +330,7 @@ class NewRequest extends React.Component {
                 <Row>                    
                     <Button className="text-with-margin-top btn  btn-primary form-inline" onClick={this.handleSubmit}>{t("save")}</Button>
                     {!formInvalid && <Button bsStyle="link" className={lastUpdateClass}>{lastUpdate && t("lastUpdate", {time: lastUpdate})}</Button>}
-                    {formInvalid && <div> error </div>}                            
+                    {formInvalid && <div className="rsvp-error"> {t("RSVPerror")} </div>}                            
                 </Row>
                 <Row><Col xs={12} md={8} mdOffset={2}><div className="text-with-margin-top">
                     {saved &&
