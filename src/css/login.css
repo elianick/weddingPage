@@ -40,4 +40,9 @@
   bottom: 0;
   left: 0;
 }
+
+.button-close{
+  position: static !important;
+  margin-left: 10px !important;
+}
   

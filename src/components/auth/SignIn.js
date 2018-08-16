@@ -154,7 +154,7 @@ class SignIn extends Component {
         return (        
             <div>
                 <CookieBanner
-                    styles={{banner: { backgroundColor: "rgba(60, 60, 60, 0.8)", "z-index": 0 },message: { fontWeight: 500 }}}
+                    styles={{banner: { minHeight:"50px",height:"auto", backgroundColor: "rgba(60, 60, 60, 0.8)", "z-index": 0 },message: { fontWeight: 500 }}}
                     message={t("cookiesInfo")} onAccept={() => {}} cookie="user-has-accepted-cookies" />
                 <Grid style={{"marginBottom":"40px"}}>
                     <Row><PageHeader className="App"></PageHeader> </Row>
