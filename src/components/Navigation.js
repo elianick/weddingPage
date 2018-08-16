@@ -29,11 +29,8 @@ class Navigation extends React.Component {
     }
     
     render() {
-        const { props: { t, i18n, authUser, activeNav, isReviewer, unreadMessages } } = this;
-       
-        const language = i18n.language.substring(0,2).toUpperCase();
-        console.log(language, i18n.language);
-        
+        const { props: { t, i18n, authUser, activeNav, isReviewer, unreadMessages } } = this;       
+        const language = i18n.language;        
         return (
             <Navbar collapseOnSelect>
                 <Navbar.Header>
@@ -57,7 +54,7 @@ class Navigation extends React.Component {
 
                     </Nav>
                     <Nav pullRight>
-                        <NavDropdown eventKey={5} title={language} id="basic-nav-dropdown">
+                        <NavDropdown eventKey={5} title={language.toUpperCase()} id="basic-nav-dropdown">
                             <MenuItem eventKey={5.1} onClick={() => this.changeLanguage("it")}>IT</MenuItem>
                             <MenuItem eventKey={5.2} onClick={() => this.changeLanguage("es")}>ES</MenuItem>
                             <MenuItem eventKey={5.3} onClick={() => this.changeLanguage("en")}>EN</MenuItem>

@@ -37,11 +37,11 @@ const handleBackButton = (event, props) => {
 
 const createNotification = (from, to, mailCode, text) => (
     {
-        from: `${from.email} - ${from.username}`,
+        from: `${from.email} ${from.username}`,
         emailTo: to? to.email: REVIEWER_MAIL,
         mailCode: mailCode,        
         text: text,
-        language: to? to.language: "IT"
+        language: to? to.language: "it"
     });
 
 

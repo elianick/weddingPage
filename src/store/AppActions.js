@@ -60,7 +60,7 @@ export function login(userAuth) {
                 const user = snapshot.toJSON();
                 user.uid = userAuth.uid;
                 loadLiterals();
-                i18n.changeLanguage(user.language);     
+                i18n.changeLanguage(user.language.toLowerCase());     
                 return dispatch(userLogin(userAuth, user));
             })
             .catch(() =>console.log("user not found"));
