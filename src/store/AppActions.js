@@ -102,9 +102,7 @@ export function loadMessages(uid, isReviewer) {
 }
 
 export function sendMessage(message, uid, isReviewer, notification) {
-    return (dispatch) => {
-        console.log(message);
-        console.log(notification);
+    return (dispatch) => {        
         db.addMessage(message, uid, isReviewer);
         db.sendNotification(notification, uid)
             .then(() => {
