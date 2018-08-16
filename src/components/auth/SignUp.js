@@ -60,7 +60,7 @@ class SignUp extends Component {
                                         author:"Elia & Silvia",
                                         isReviewer:true,
                                         read:false,
-                                        uid:user.user.uid,
+                                        uid:"-",
                                         creationDate: date.toJSON()
                                     },user.user.uid,notification);                  
                                     return history.push(routes.HOME);
@@ -85,6 +85,7 @@ class SignUp extends Component {
         const isInvalid = 
             passwordOne !== passwordTwo ||
             passwordOne === "" ||
+            passwordTwo === "" ||
             email === "" ||
             username === "";
         if (loading){

@@ -117,7 +117,7 @@ class SignIn extends Component {
                             author:"Elia & Silvia",
                             isReviewer:true,
                             read:false,
-                            uid:user.uid,
+                            uid:"-",
                             creationDate: date.toJSON()
                         },user.uid,notification);
                         return this.props.history.push(routes.HOME);                        
