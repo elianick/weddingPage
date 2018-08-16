@@ -274,4 +274,9 @@ div.container{
       opacity: 1;
     }
   }
+
+.rsvp-error{
+  color:red;
+  padding: 15px;
+}
   

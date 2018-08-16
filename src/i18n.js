@@ -12,6 +12,7 @@ i18n
                     RSVPsubheader: "Here you can confirm that you will join us. Not so fast, cowboy... Before getting access and being able to confirm, you need to pass a test of 15 questions; once the test is completed, some magic will activate the RSVP below. If you think it's too many questions, we honestly don't care: we spent a lot of hours coding them, so they are mandatory, full stop. Make us happy.",
                     RSVPsubheader2: "P.D.: Are you wondering what the hell is this RSVP? Don't worry, Elia didn't know either. It stands for Répondez S'il Vous Plaît, which in good manners is used to require an answer to the invitation; this is exactly what you can provide in the RSVP. Let's start with the quiz, and the most important thing: have fun!", 
                     RSVPexplain: "confirm your attendance",
+                    RSVPerror: "Ouch! We want to know who is coming along. If you said you are bringing someone, you can't leave those fields blank.",
                 },
                 navigation: {                
                     "Log in": "Log in",
@@ -88,7 +89,8 @@ i18n
                     popupTitle: "BENVENUTO!",
                     RSVPsubheader: "Su questa pagina potrai confermarci che ci sarai. No, non così in fretta... Prima di accedere alla sezione di conferma, c'è una prova da superare: un quiz di 15 domande che, una volta completate, come per magia attiveranno l'accesso al RSVP. Se le domande ti sembrano troppe, sinceramente non ce ne può fregà de' meno: ci abbiamo messo un sacco a programmarle quindi sono obbligatorie e basta. Facci contenti.",
                     RSVPsubheader2: "P.S.: Ti stai chiedendo che diamine è l'RSVP? Tranquillo/a, nemmeno Elia lo sapeva. È la sigla di Répondez S'il Vous Plaît, con cui nel galateo si indica la cortese richiesta di confermare o meno la propria partecipazione; questo è esattamente quello che potrai fare nella nostra sezione RSVP. Ora bando alle ciance, inizia sto benedetto quiz!",    
-                    RSVPexplain: "conferma la tua partecipazione",             
+                    RSVPexplain: "conferma la tua partecipazione",
+                    RSVPerror: "Ops... Vogliamo sapere chi ti accompagnerà. Se dici che verrai con qualcuno, non puoi lasciare in bianco nome/cognome o età.",             
                 },
                 navigation: {                
                     "Log in": "Log In",
@@ -165,6 +167,7 @@ i18n
                     RSVPsubheader: "En esta página podrás confirmarnos que vendrás. No, no tan rápido... Antes de poder acceder a la sección para confirmar, hay que superar una prueba: un test de 15 preguntas que, una vez completadas, por arte de magia activarán el acceso al RSVP. Si te parecen muchas preguntas, sinceramente no nos importa: hemos tardado muchas horas para programarlas, con lo cual son obligatorias y punto. Haznos felices.",
                     RSVPsubheader2: "P.D.: ¿Te estás preguntando qué es el RSVP? Tranquilo/a, ni siquiera Elia lo sabía. Es el acrónimo de Répondez S'il Vous Plaît, y según las buenas maneras indica la amable petición a los invitados de confirmar su participación; eso es lo que vas a poder hacer en nuestra sección de RSVP. Dale, basta perder tiempo, ¡empieza este quiz!", 
                     RSVPexplain: "confirma tu participación",
+                    RSVPerror: "Ups. Queremos saber quienes vendrán. Si dijiste que alguien te acompañará, no puedes dejar en blanco el nombre o la edad.",
                 },
                 navigation: {                
                     "Log in": "Log In",
