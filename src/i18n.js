@@ -33,7 +33,18 @@ i18n
                 userList: {
                     "List of Users": "List of Users",
                     "Username": "Username",
-                    "Email": "Email"                   
+                    "Email": "Email",
+                    "Google Display Name": "Name",
+                    "Language": "Lang",
+                    "Mark": "Mark",
+                    "isConfirmed": "Is coming",
+                    "persons": "With",
+                    "intollerance": "Intolerance",
+                    "stayNight": "Night",
+                    "foreign": "Foreign",
+                    "arrival": "Arrival",
+                    "ride": "Ride Requested",
+                    "lastUpdate": "Last Update"
                 },
                 wall: {
                     "Send Message": "Send Message",
@@ -109,9 +120,20 @@ i18n
                     days: "giorni"
                 },             
                 userList: {
-                    "List of Users": "List of Users",
+                    "List of Users": "Lista Utenti",
                     "Username": "Username",
-                    "Email": "Email"
+                    "Email": "Email",
+                    "Google Display Name": "Name",
+                    "Language": "Lingua",
+                    "Mark": "Voto",
+                    "isConfirmed": "Viene",
+                    "persons": "Con",
+                    "intollerance": "Intolleranze",
+                    "stayNight": "Serata",
+                    "foreign": "da Fuori",
+                    "arrival": "Arriva",
+                    "ride": "Passaggio",
+                    "lastUpdate": "Ultima Modifica"
                 },
                 wall: {
                     "Send Message": "Invia il tuo messaggio",
@@ -186,9 +208,20 @@ i18n
                     days: "días"
                 },             
                 userList: {
-                    "List of Users": "List of Users",
+                    "List of Users": "Lista usuarios",
                     "Username": "Username",
-                    "Email": "Email"
+                    "Email": "Email",
+                    "Google Display Name": "Name",
+                    "Language": "Idioma",
+                    "Mark": "Nota",
+                    "isConfirmed": "Viene",
+                    "persons": "Con",
+                    "intollerance": "Intolerancias",
+                    "stayNight": "Fiesta Noche",
+                    "foreign": "De fuera",
+                    "arrival": "Llega",
+                    "ride": "Pasaje",
+                    "lastUpdate": "Ùltima Actualización"
                 },
                 wall: {
                     "Send Message": "Envía tu mensaje",

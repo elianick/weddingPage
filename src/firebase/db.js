@@ -22,6 +22,13 @@ export const getLiterals = () => db.ref("staticData/literals").once("value");
 export const onceGetUsers = () =>
     db.ref("users").once("value");
 
+export const onceGetQuiz = () =>
+    db.ref("quiz").once("value");
+
+export const onceGetRSVP = () =>
+    db.ref("rsvp").once("value");
+
+
 export const onceGetUser = (uid) =>
     db.ref(`users/${uid}`).once("value");
 
